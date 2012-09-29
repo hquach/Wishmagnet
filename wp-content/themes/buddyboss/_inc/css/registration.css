@@ -1,0 +1,244 @@
+/*--------------------------------------------------------------
+1.0 - Reset default browser CSS v1.0
+--------------------------------------------------------------*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{background:#fff;line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}a img{border:0}
+
+/*--------------------------------------------------------------
+Global
+--------------------------------------------------------------*/
+
+body {
+	background: #fff;
+	color: #333333;
+	font: 12px Arial,"Bitstream Vera Sans",Helvetica,Verdana,sans-serif;
+	padding-top: 30px;
+	margin-bottom: 40px;
+}
+#wp-admin-bar {
+	display: none;
+}
+#backtoblog {
+  background: #d7d7d7 url(../images/backtoblog-grad.png) top repeat-x;
+  border-bottom: 1px solid #C6C6C6;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  width: 100%;
+}
+#backtoblog a {
+  color: #464646;
+}
+#backtoblog a {
+  display: block;
+  padding: 8px 0 0 15px;
+  text-decoration: none;
+}
+	
+/*--------------------------------------------------------------
+Forms
+--------------------------------------------------------------*/
+
+#logo {
+	margin: 0 auto 20px;
+	padding-top: 40px;
+  width: 500px;
+  text-align: center;
+}
+#login {
+  margin: 0 auto;
+  width: 400px;
+  padding: 0 10px;
+  overflow: hidden;
+}
+#login #form-container {
+	float: left;
+	padding-bottom: 60px;
+	width: 100%;
+}
+#login h1 {
+	display: none; /* hides title */
+	font-size: 24px;
+  padding: 0 15px 15px;
+  text-align: center;
+  width: auto;
+  color: #555;
+}
+#login #register-progress-bar {
+	width: 100%;
+	height: 45px;
+	overflow: hidden;
+	text-indent: -1000px;
+	margin: -3px 0 25px;
+	background-image: url(../images/register-progress-bar.jpg);
+	background-repeat: no-repeat;
+}
+#login #register-progress-bar.step-1 {
+	background-position: center top;
+}
+#login #register-progress-bar.step-2 {
+	background-position: center center;
+}
+#login #register-progress-bar.step-3 {
+	background-position: center bottom;
+}
+#login form p {
+	text-align: left;
+}
+#login p.instructions {
+	padding: 0 15px 20px;
+	color: #777;
+	font-size: 14px;
+	line-height: 20px;
+}
+.register-section {
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius:3px;
+	background:#fff; 
+	border:1px solid #e5e5e5;
+	-moz-box-shadow: 0 4px 10px -1px rgba(200, 200, 200, 0.7);
+	-webkit-box-shadow: 0 4px 10px -1px rgba(200, 200, 200, 0.7);
+	-khtml-box-shadow: 0 4px 10px -1px rgba(200, 200, 200, 0.7);
+	box-shadow: 0 4px 10px -1px rgba(200, 200, 200, 0.7);
+  border: 1px solid #E5E5E5;
+  font-weight: normal;
+  padding: 24px;
+  margin-bottom: 25px;
+}
+.register-section h4 {
+	color: #777;
+  font-size: 18px;
+  margin: 0 0 15px;
+}
+form.standard-form {
+	width: auto;
+}
+form.standard-form div#basic-details-section input {
+	margin-bottom: 17px;
+}
+form.standard-form div#basic-details-section p.description {
+	color: #aaa;
+	margin: -13px 0 15px;
+	font-size: 12px;
+}
+form.standard-form div.editfield {
+	margin-bottom: 17px;
+}
+form.standard-form div.editfield p.description {
+	color: #aaa;
+	margin: 4px 0 8px;
+	font-size: 12px;
+}
+form.standard-form input[type=text],
+form.standard-form input[type=password],
+form.standard-form textarea {
+	background: #FBFBFB;
+  border: 1px solid #E5E5E5;
+  font-size: 24px;
+  margin-bottom: 0;
+  margin-right: 6px;
+  margin-top: 2px;
+  padding: 3px;
+  color: #555;
+  width: 97%;
+  -webkit-box-shadow: 1px 1px 2px rgba(200, 200, 200, 0.2) inset;
+  -moz-box-shadow: 1px 1px 2px rgba(200, 200, 200, 0.2) inset;
+  box-shadow: 1px 1px 2px rgba(200, 200, 200, 0.2) inset;
+}
+form.standard-form label, form.standard-form span.label {
+	color: #777777;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+  display: block;
+  line-height: 1.5;
+}
+p.submit input {
+  background: url("../images/button-grad.png") repeat-x scroll left top #21759B;
+  border: 1px solid #298CBA;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: "Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 10px;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  -moz-border-radius: 11px;
+  -webkit-border-radius: 11px;
+  border-radius: 11px;
+  width: auto;
+}
+p.submit input:hover {
+	border: 1px solid #13455B;
+	color: #EAF2FA;
+}
+#login form p.signup-submit {
+	text-align: center;
+}
+p.signup-submit input {
+	background-image: url("../images/signup-button.jpg");
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-color: #58ad2e;
+	width: 232px;
+	height: 45px;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	text-indent: -20px;
+	font-size: 16px;
+}
+p.signup-submit input:hover {
+	background-position: center bottom;
+}
+#sidebar-login-form p.submit {
+	text-align: right;
+}	
+#nav {
+	margin: -20px 0 0;
+  padding: 16px;
+  text-shadow: 0 1px 0 #FFFFFF;
+}
+#nav a {
+	color: #21759B;
+}
+
+/*--------------------------------------------------------------
+Messages
+--------------------------------------------------------------*/
+
+.register-section .error {
+	color: #fe4f40;
+	padding: 2px 0;
+}
+div#message {
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  margin: 0 0 25px 8px;
+}
+div#message p {
+	padding: 10px 15px;
+}
+div#message.error {
+	background-color: #FFEBE8;
+  border-color: #CC0000;
+}
+div#message.updated {
+	background-color: #C2F1BF;
+  border-color: #71B582;
+}
+
+/*--------------------------------------------------------------
+Login Box
+--------------------------------------------------------------*/
+
+#login-box #sidebar-login-form {
+	padding: 24px 24px 10px;
+}

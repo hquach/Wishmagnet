@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: BuddyBoss 2.0.1\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: TJ Chester <tj@buddyboss.com>\n"
+"Language-Team: BuddyBoss <info@buddyboss.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: sidebar-home-left.php:14
+msgid "Hi"
+msgstr ""
+
+#: sidebar-home-left.php:21
+msgid "View My Profile"
+msgstr ""
+
+#: sidebar-home-left.php:22
+msgid "Edit My Profile"
+msgstr ""
+
+#: sidebar-home-left.php:23
+msgid "Change My Avatar"
+msgstr ""
+
+#: sidebar-home-left.php:24
+msgid "Browse Members"
+msgstr ""
+
+#: buddy_boss_wall.php:36
+msgid "News Feed"
+msgstr ""
+
+#: buddy_boss_wall.php:37
+msgid "My Likes"
+msgstr ""
+
+#: buddy_boss_wall.php:38
+msgid "Wall"
+msgstr ""
+
+#: buddy_boss_wall.php:415
+#: buddy_boss_wall.php:440
+msgid "person"
+msgstr ""
+
+#: buddy_boss_wall.php:415
+#: buddy_boss_wall.php:440
+#: buddy_boss_wall.php:522
+msgid "people"
+msgstr ""
+
+#: buddy_boss_wall.php:416
+#: buddy_boss_wall.php:441
+msgid "like"
+msgstr ""
+
+#: buddy_boss_wall.php:416
+#: buddy_boss_wall.php:441
+msgid "likes"
+msgstr ""
+
+#: buddy_boss_wall.php:417
+#: buddy_boss_wall.php:443
+msgid "this"
+msgstr ""
+
+#: buddy_boss_wall.php:514
+#: buddy_boss_wall.php:522
+msgid "mentioned"
+msgstr ""
+
+#: buddy_boss_wall.php:533
+msgid "in a public message"
+msgstr ""
+
+#: buddy_boss_wall.php:552
+msgid "%s wrote on %s Wall"
+msgstr ""
+
+#: activity/entry.php:73
+#: activity/entry-wall.php:61
+msgid "Comment <span>(%s)</span>"
+msgstr ""
+
+#: buddy_boss_pics.php:36
+#: buddy_boss_pics.php:186
+msgid "Photos"
+msgstr ""
+
+#: buddy_boss_pics.php:176
+msgid "Photos <span>%d</span>"
+msgstr ""
+
+#: buddy_boss_pics.php:533
+msgid "posted a new picture"
+msgstr ""
+
+#: buddy_boss_pics.php:885
+msgid "Prev"
+msgstr ""
+
+#: buddy_boss_pics.php:892
+msgid "First"
+msgstr ""
+
+#: buddy_boss_pics.php:911
+msgid "Page"
+msgstr ""
+
+#: buddy_boss_pics.php:928
+msgid "Last"
+msgstr ""
+
+#: buddy_boss_pics.php:935
+msgid "Next"
+msgstr ""
+

@@ -1,0 +1,213 @@
+/*--------------------------------------------------------------
+Styles for the BuddyBar - My Account, Notifications, etc.
+--------------------------------------------------------------*/
+
+body {
+	padding-top: 25px;
+}
+#wp-admin-bar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	height: 0;
+	font-size: 11px;
+	width: 100%;
+	z-index: 1000;
+}
+#wp-admin-bar .padder {
+	position: relative;
+	padding: 0;
+	width: 1000px;
+	margin: 0 auto;
+	background: transparent;
+	height: 0;
+}
+
+#wp-admin-bar * { z-index: 999; }
+
+#wp-admin-bar a img {
+	border: none;
+}
+#wpadminbar .quicklinks li#wp-admin-bar-my-account-with-avatar > a img {
+	width: 16px;
+	height: 16px;
+}
+#wp-admin-bar li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	line-height: 100%;
+	text-align: left;
+}
+#wp-admin-bar li.bp-login a, #wp-admin-bar li.bp-signup a {
+	min-width: 80px;
+}
+#wp-admin-bar li a {
+	padding: 8px 14px;
+	color: #000;
+	text-decoration: none;
+	font-size: 12px;
+	border-left: 1px solid #d7d7d7;
+	text-align: center;
+	word-wrap: break-word;
+	min-width: 100px;
+	_width:expression(this.currentStyle.getAttribute('100px')); /* min-width for IE7 */
+}
+body.logged-in #wp-admin-bar li a {
+	text-align: left;
+}
+#wp-admin-bar li#bp-adminbar-account-menu a,
+#wp-admin-bar li.bp-login a,
+#wp-admin-bar li ul li a {
+	border-left: none; /* first nav item should not have a border-left */
+	margin-left: 1px; /* makes up for missing border-left */
+}
+#wp-admin-bar li.alt { border: none; }
+
+#wp-admin-bar ul li ul li a span {
+	display: none;
+}
+#wp-admin-bar li:hover, #wp-admin-bar li.hover {
+	position: static;
+}
+
+#admin-bar-logo {
+	display: none; /* hide the adminbar logo */
+}
+
+/*--------------------------------------------------------------
+First Level Lists
+--------------------------------------------------------------*/
+
+#wp-admin-bar ul { /* all lists */
+	list-style: none;
+	line-height: 1;
+	cursor: pointer;
+	height: auto;
+	padding: 0;
+	float: right;
+	margin: 30px 0 0 0;
+  background: #e1e0e0 url(../images/button-gradient.png) top repeat-x;
+  border: 1px solid #ccc;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+#wp-admin-bar ul li { /* all list items */
+	padding: 0;
+	float: left;
+	position: relative;
+}
+#wp-admin-bar ul li.no-arrow {
+	background: none;
+	padding-right: 0;
+}
+#wp-admin-bar ul li ul li {
+	background-image: none;
+}
+#wp-admin-bar ul li.align-right {
+	position: absolute;
+	right: 0;
+}
+#wp-admin-bar ul li a {
+	display: block;
+}
+#wp-admin-bar ul.main-nav li:hover, #wp-admin-bar ul.main-nav li.sfhover, #wp-admin-bar ul.main-nav li ul li.sfhover {
+	background-color: #e9e9e9;
+}
+
+/*--------------------------------------------------------------
+Second Level Lists
+--------------------------------------------------------------*/
+
+#wp-admin-bar ul li ul {
+	position: absolute;
+	width: 128px;
+	left: -999em;
+	margin-left: 0;
+	margin-top: 0; /* lines up dropdowns with menu */
+	background: #fff;
+	border: 1px solid #dfdfdf;
+	-moz-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#wp-admin-bar ul li ul {
+	border-top: none;
+	-moz-border-radius-topleft: 0;
+	-moz-border-radius-topright: 0;
+	-webkit-border-top-left-radius: 0;
+	-webkit-border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+#wp-admin-bar ul li ul li ul {
+	border-top: 1px solid #dfdfdf;
+}
+#wp-admin-bar ul li ul a {
+	color: #000;
+	line-height: 1.1;
+}
+#wp-admin-bar ul li ul li {
+	float: left;
+	width: 128px;
+	margin: 0;
+}
+#wp-admin-bar ul li ul li:hover a {
+	color: #000;
+}
+#wp-admin-bar ul li div.admin-bar-clear {
+	clear: both;
+}
+#wp-admin-bar ul.main-nav li ul li:hover, #wp-admin-bar ul.main-nav li ul li.sfhover, #wp-admin-bar ul.main-nav li ul li.sfhover {
+	background-color: #e9e9e9;
+}
+
+/*--------------------------------------------------------------
+Third and Above Level Lists
+--------------------------------------------------------------*/
+
+#wp-admin-bar ul li ul ul {
+	margin: -28px 0 0 128px;
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius: 3px;
+	border-top-right-radius: 3px;
+}
+#wp-admin-bar ul li ul li:hover ul li a {
+	color: #000;
+}
+#wp-admin-bar ul li ul li ul li:hover a {
+	color: #000;
+}
+#wp-admin-bar ul li:hover ul, #wp-admin-bar ul li ul li:hover ul, #wp-admin-bar ul li.sfhover ul, #wp-admin-bar ul li ul li.sfhover ul  {
+	left: auto;
+}
+#wp-admin-bar ul li.align-right:hover ul {
+	right: 0;
+}
+#wp-admin-bar ul li:hover ul ul, #wp-admin-bar li.sfhover ul li ul {
+	left: -999em;
+}
+
+/*--------------------------------------------------------------
+Menu Items
+--------------------------------------------------------------*/
+
+#wp-admin-bar img.avatar {
+	float: left;
+	margin-right: 8px;
+}
+#wp-admin-bar span.activity {
+	display: block;
+	margin-left: 34px;
+	padding: 0;
+}
+#wp-admin-bar ul.author-list li a {
+	height: 17px;
+}
+#wp-admin-bar ul li#bp-adminbar-notifications-menu a span {
+	color: #f96565;
+  font-weight: bold;
+  float: right;
+  * float: none; /* IE7 */
+}

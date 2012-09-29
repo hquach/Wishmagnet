@@ -1,0 +1,81 @@
+/*--------------------------------------------------------------
+Add your own styles here to make theme updates easier.
+To override any styles from default.css, simply copy them into here and edit away.
+
+Consider using a child theme: http://www.buddyboss.com/child-themes/
+--------------------------------------------------------------*/
+.wish-create {
+    position: absolute;
+    right: 0;
+    top: 50px;
+}
+
+div.wish-create input[type="text"] {
+    height: 15px;
+    padding: 5px;
+    width: 222px;
+}
+
+.notlogged-wish {
+    position: absolute;
+    right: 0;
+    top: 0;   
+}
+
+#bpopup{
+    display:none;
+    z-index:2;
+    position:fixed;
+    _position:absolute;
+    background-color:white;
+    width:480px;
+    height:300px;
+    border:1px;
+    text-align:center;
+    border-radius:7px 7px 7px 7px;
+    box-shadow: 0px 0px 15px 8px rgba(255, 255, 255, 0.6);
+}
+
+.close {
+    float: right;
+    font-size: 20px;
+    line-height: 15px;
+}
+
+div.close { 
+    margin: 11px;
+    padding: 2px;
+    cursor: pointer;
+    width:50px;
+    height:15px;
+    background-image: url('../images/closelabel.gif');
+    border: 0px;
+    -webkit-appearance: none;
+}
+.fbLoginButton{
+    display: block;
+    margin-top: 15px;
+}
+#form_loginform{
+    padding: 20px;
+}
+#form_loginform input[type="text"], #form_loginform input[type="password"]{
+    display: block;
+    margin: 5px 0 0 0px;
+    width: 250px;
+    padding: 5px 3px 5px 3px;
+}
+#form_loginform>div{
+    width: 261px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+#forgotText>a:first-child{
+    margin-right: 105px;
+}
+#form_loginform label{
+    font-weight: bold;
+}
+#form_loginform input[type="submit"]{
+    padding: 5px 25px !important;
+}
