@@ -79,3 +79,70 @@ div.close {
 #form_loginform input[type="submit"]{
     padding: 5px 25px !important;
 }
+.wish_list{
+    overflow: hidden;
+}
+.wish_list li{
+    border-bottom: 1px dotted gray;
+    min-width: 450px;
+    min-height: 60px;
+    float: left;
+    clear: both;
+}
+.for_wishes{
+    display: block;
+    min-width: 24px;
+    float: left;
+    margin-right: 20px;
+}
+.for_wishes span{
+    display: inline-block;
+    height: 25px;
+    padding-left: 25px;
+    margin: 3px 0 0 5px;
+    float: left;
+    clear: both;
+    font: 14px Arial;
+    font-weight: bold;
+    line-height: 24px;
+}
+.black_star{
+    background: url('../images/star.png') no-repeat 0 0;
+}
+.green_star{
+    background: url('../images/star_green.png') no-repeat 0 0;
+}
+.wishes_info {
+    padding-top: 10px;    
+}
+.wishes_info div{
+    display: inline-block;
+    font-family: Arial;
+    float: left;
+    clear: both;
+}
+.wish_list a{
+    font-size: 18px;
+    font-weight: bold; 
+    line-height: 26px;
+}
+.wish_list .submited-by{
+    font-size: 12px;
+    font-weight: normal; 
+}
+
+/*
+.wish_list a{
+    float: left;
+    display: block;
+    font: 20px Arial;
+    font-weight: bold;
+    line-height: 55px;    
+}*/
+/*.wish_list .submited-by{
+    float: right;
+    display: block;
+    font: 12px Arial;
+    font-weight: normal;  
+}
+*/

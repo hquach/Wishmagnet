@@ -23,8 +23,30 @@ function intention_install() {
 function intention_register_widget() {
     require_once (ABSPATH . 'wp-content/plugins/intention/intention_widget.class.php');
     register_widget('SetIntentionWidget');
+    register_widget('Recent_Intentions');
+    register_widget('WishTimerWidget');
 }
-  add_action('widgets_init', 'intention_register_widget'); 
+  add_action('widgets_init', 'intention_register_widget');
+  
+  
+function saveWishTime(){
+    global $wpdb;
+    $intention_tbl_name = $wpdb->prefix . 'intentions';
+    
+    ob_clean();
+    $meditime = $_POST['meditime'];    
+    $wisher_id = get_current_user_id();
+    
+    //$wish_id = get_the_ID();
+    $wish_id = get_the_ID();
+    
+    $wish_query = "SELECT total_mins FROM ".$intention_tbl_name." WHERE intention_id=".$wish_id." AND meditator_id=".$wisher_id;
+    echo $wish_query;
+    //$pre_mins = $wpdb->get_row($wish_query);
+    //$new_value = $pre_mins->total_mins;
+    die();
+}
+add_action("wp_ajax_saveWishTime", "saveWishTime");  
   
 /*function register_intention_scripts() {
 //    wp_register_script('bpopup', get_template_directory_uri() . '/_inc/bpopup.js' );

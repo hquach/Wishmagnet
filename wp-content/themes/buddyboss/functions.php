@@ -142,6 +142,7 @@ function bp_dtheme_enqueue_scripts() {
         
         // Enqueue the main JS
         wp_enqueue_script( 'bpopup', get_template_directory_uri() . '/_inc/js/bpopup.js', array( 'jquery' ), $version );
+        wp_enqueue_script( 'timer', get_template_directory_uri() . '/_inc/js/timer.js', array( 'jquery' ), $version );
 	wp_enqueue_script( 'main', get_template_directory_uri() . '/_inc/main.js', array( 'jquery' ), $version );        
 }
 add_action( 'wp_enqueue_scripts', 'bp_dtheme_enqueue_scripts' );
@@ -278,9 +279,18 @@ function bp_dtheme_widgets_init() {
 			'before_title'  => '<h3 class="widgettitle">',
 			'after_title'   => '</h3>'
 		) );
+        
+        //Custom Area 12, that will be shown always in the footer section
+        register_sidebar( array(
+			'name'          => 'Intentions Feed',
+			'id'          	=> 'intention-feed',
+			'description'   => 'Footer Widget Area to be shown in all pages',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widgettitle">',
+			'after_title'   => '</h3>'
+		) );        
 }
-
-
 add_action( 'widgets_init', 'bp_dtheme_widgets_init' );
 endif;
 

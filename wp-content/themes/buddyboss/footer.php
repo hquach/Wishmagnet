@@ -1,4 +1,9 @@
 			</div> <!-- #container -->
+                        
+                        <div class="wish-feed">
+			   <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Intentions Feed') ) : ?>
+			   <?php endif; ?>
+	                </div>
 			
 			<div id="push"></div>
 		

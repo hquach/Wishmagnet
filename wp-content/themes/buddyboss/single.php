@@ -1,4 +1,4 @@
-<?php get_header() ?>
+<?php get_header(); ?>
 
 	<div id="content" class="two_column">
 		<div class="padder">
@@ -23,6 +23,8 @@
 	
 							<div class="entry">
 								<?php the_content( __( 'Read the rest of this entry &rarr;', 'buddypress' ) ); ?>
+                                                            
+                                                                <?php the_widget('WishTimerWidget'); ?>
 	
 								<?php wp_link_pages( array( 'before' => '<div class="page-link"><p>' . __( 'Pages: ', 'buddypress' ), 'after' => '</p></div>', 'next_or_number' => 'number' ) ); ?>
 								
