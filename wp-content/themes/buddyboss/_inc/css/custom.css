@@ -133,10 +133,10 @@ div.close {
 }
 .wish-stats{  
   margin: 50px auto; 
+  color: #31536F;
   font-size: 14px;
   text-align: center;
   letter-spacing: 1px;
-  color: #4379a3s;
 }
 
 div.widget_recent_intentions{

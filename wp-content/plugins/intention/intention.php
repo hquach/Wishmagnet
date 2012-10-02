@@ -52,8 +52,9 @@ function saveWishTime(){
     }else { $wish_total = 0; }
     
      
-        list($hours, $minutes, $seconds) = sscanf($meditime, "%d:%d:%d");
-        $time_seconds = $hours * 3600 + $minutes * 60 + $seconds;
+        list($minutes, $seconds, $micros) = sscanf($meditime, "%d:%d:%d");
+        //$time_seconds = $hours * 3600 + $minutes * 60 + $seconds;
+        $time_seconds = $minutes * 60 + $seconds;
         
          $wish_total += $time_seconds;
         
