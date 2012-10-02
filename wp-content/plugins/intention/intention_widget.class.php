@@ -124,29 +124,48 @@ class WishTimerWidget extends WP_Widget {
     return $instance;      
   }
   
-  function widget($args, $instance){
+  function widget($args, $instance){    
     extract($args);
 	
     $title = $instance['title'];
                 
-    echo $before_widget;     
+    echo $before_widget;
     
-    if ( is_user_logged_in() ) {
+    global $post_id; 
+    if(isset($post_id) && $post_id > 0) {
+        
+      if ( is_user_logged_in() ) {              
     ?>
+    
     <div class="wish-timer"> 
     <?php
     wp_enqueue_script("startend", get_template_directory_uri() . '/_inc/js/startend.js');
-    wp_localize_script("startend", 'Ajaxobj', array('ajax_url' => admin_url()));
+    wp_localize_script("startend", 'Ajaxobj', array('ajax_url' => admin_url(), 'post_id' => $post_id));
         
        if ( $title ) echo $before_title . $title . $after_title; 
-       else echo '<h4>Start Meditation:</h4>'; ?> 
+       else echo '<h4>Start Meditating:</h4>'; ?> 
         
             <span class='startstoptime'><b>00 : 00</b></span><br />					                                     
-              <input type='button' value='Start/Resume' onclick='starttimer();' />
-              <input type='button' value='Pause/Stop' onclick='startstopReset();' />        
+              <input type='button' value='Start/Pause' onclick='starttimer();' />
+              <input type='button' value='Stop' onclick='startstopReset();' />        
     </div>
     
-    <?php
+    <?php       
+      }
+     
+      //Stats:                     
+                     $black_star = get_total_meditators($post_id);
+                     $green_star = get_total_seconds($post_id);                     
+                     $convert = secns_to_human($green_star);   
+                     
+                     ?>
+    
+       <div class="wish-stats" id="stats">
+            <b>Total Meditated People: </b><?php echo $black_star; ?> <br />
+            <b>Total Meditated Time: </b><?php echo $convert; ?> <br />                     
+       </div>
+      
+   <?php   
     }
     echo $after_widget;
   }
@@ -190,32 +209,25 @@ class Recent_Intentions extends WP_Widget {
 		if ($r->have_posts()) :
 ?>
 		<?php echo $before_widget; ?>
-		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
-    
-                <?php global $wpdb; ?>
-                <?php $stars_tbl_name = $wpdb->prefix . 'intentions'; ?>
+		<?php if ( $title ) echo $before_title . $title . $after_title; ?>               
     
 		  <ul class="wish_list">
 		  <?php  while ($r->have_posts()) : $r->the_post(); ?>
                     
                    <?php 
-                     $blackquery = "SELECT COUNT(DISTINCT(meditater_id)) FROM ".$stars_tbl_name." WHERE intention_id=". get_the_ID()."";
-                     $greenquery = "SELECT SUM(total_mins) FROM ".$stars_tbl_name." WHERE intention_id=". get_the_ID()."";
-                     
-                     $black_star = $wpdb->get_var($blackquery);
-                     $green_star = $wpdb->get_var($greenquery);                     
+                     $black_star = get_total_meditators(get_the_ID());
+                     $green_star = get_total_seconds(get_the_ID());                     
+                     $convert = secns_to_human($green_star);                    
                    ?>
 		
                     <li>
                         <span class="for_wishes">
-                            <span class="black_star"><?php echo $black_star; ?></span>
-                            <span class="green_star"><?php echo $green_star; ?></span>                          
+                            <span class="black_star"><?php echo $black_star; ?> people</span>
+                            <span class="green_star"><?php echo $convert; ?></span>                          
                         </span>
                         <div class="wishes_info">
-                          <a href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>">
-                              <?php if ( get_the_title() ) the_title(); else the_ID(); ?>
-                          </a>
-                          <p class="submited-by"><?php printf( __( 'set by %s', 'buddypress' ), get_the_author_meta('display_name') ) ?></p>
+                          <a href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if(get_the_title()) the_title(); else the_ID(); ?></a>
+                          <span><?php printf( __( 'set by %s', 'buddypress' ), get_the_author_meta('display_name') ) ?></span>
                         </div>
                     </li>
                     

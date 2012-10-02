@@ -8,6 +8,7 @@
 			<div class="page" id="blog-single" role="main">
 
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                              <?php $post_id = get_the_ID(); ?>
 				
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 

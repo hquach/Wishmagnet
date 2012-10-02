@@ -91,19 +91,17 @@ div.close {
 }
 .for_wishes{
     display: block;
-    min-width: 24px;
+    min-width: 124px;
     float: left;
     margin-right: 20px;
 }
 .for_wishes span{
-    display: inline-block;
+    display: block;
     height: 25px;
     padding-left: 25px;
     margin: 3px 0 0 5px;
-    float: left;
-    clear: both;
-    font: 14px Arial;
-    font-weight: bold;
+    font: 12px Arial;
+    font-weight: normal;
     line-height: 24px;
 }
 .black_star{
@@ -113,36 +111,34 @@ div.close {
     background: url('../images/star_green.png') no-repeat 0 0;
 }
 .wishes_info {
+    min-width: 71px;
+    max-width: 750px;
     padding-top: 10px;    
-}
-.wishes_info div{
-    display: inline-block;
-    font-family: Arial;
     float: left;
-    clear: both;
-}
-.wish_list a{
-    font-size: 18px;
-    font-weight: bold; 
-    line-height: 26px;
-}
-.wish_list .submited-by{
-    font-size: 12px;
-    font-weight: normal; 
 }
 
-/*
 .wish_list a{
-    float: left;
     display: block;
-    font: 20px Arial;
-    font-weight: bold;
-    line-height: 55px;    
-}*/
-/*.wish_list .submited-by{
-    float: right;
-    display: block;
-    font: 12px Arial;
-    font-weight: normal;  
+    font-size: 18px;
+    font-weight: bold; 
+    line-height: 25px;
 }
-*/
+.wishes_info>span{
+    display: block;
+    line-height: 20px;
+    float: right;
+    font-size: 12px;
+    font-weight: normal; 
+    font-style: italic;
+}
+.wish-stats{  
+  margin: 50px auto; 
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #4379a3s;
+}
+
+div.widget_recent_intentions{
+    margin: 50px 0 20px 0;
+}

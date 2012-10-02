@@ -11,28 +11,28 @@ startstopTimer = jQuery.timer(function() {
 	}, 70, false);
         
 function starttimer() {
-  //startstopTimer.toggle();    
-  startstopTimer.play();    
+  startstopTimer.toggle();    
+  //startstopTimer.play();    
 }
 
 function startstopReset() {     
-	//startstopCurrent = 0;
-	//startstopTimer.stop().once();              
-        startstopTimer.stop();
+	startstopCurrent = 0;
+	startstopTimer.stop().once();              
+        //startstopTimer.stop();
         ajaxtoSave();
-        //document.cookie="meditime="+returnstr;
 }
 
-function ajaxtoSave(){
+function ajaxtoSave(){    
      jQuery.ajax({
             url: Ajaxobj.ajax_url + 'admin-ajax.php',
             type : 'POST',
             data: ({
                 action: 'saveWishTime',
-                meditime: returnstr
+                meditime: returnstr,
+                postid: Ajaxobj.post_id
             }),
-            success: function(resp) {                
-                alert(resp);
+            success: function(resp) {           
+                jQuery("#stats").html(resp);
             }
     });
 }
