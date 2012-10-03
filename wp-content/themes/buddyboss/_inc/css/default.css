@@ -134,7 +134,7 @@ div#content.three_column .padder { /* Three Column Layout */
 
 #header {
 	position: relative;
-	height: 126px;
+	height: 205px;
 	margin-bottom: 30px;
 	z-index: 1000; /* Allows drop-down navigation to appear above #container */
 }
@@ -146,7 +146,7 @@ div#content.three_column .padder { /* Three Column Layout */
   position: absolute;
   top: 0;
   z-index: 1;
-  height: 87px;
+  height: 166px;
   overflow: hidden;
 }
 

@@ -736,7 +736,7 @@ function my_custom_login_logo() {
 	
 	$logo = (get_option("buddy_boss_custom_logo", FALSE) == FALSE) ? get_bloginfo('template_directory').'/_inc/images/logo.jpg' : get_option("buddy_boss_custom_logo");
     echo '<style type="text/css">
-        #login h1 a { background:url('.$logo.') top center no-repeat !important; width: 500px; height: 85px; margin: 0 -90px; }
+        #login h1 a { background:url('.$logo.') top center no-repeat !important; width: 500px; height: 164px; margin: 0 -90px; }
         html { background-color: #fff !important; }
     </style>';
 }
