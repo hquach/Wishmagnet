@@ -525,7 +525,7 @@ function bp_dtheme_ajax_messages_send_reply() {
 		<div class="message-box new-message">
 			<div class="message-metadata">
 				<?php do_action( 'bp_before_message_meta' ) ?>
-				<?php echo bp_loggedin_user_avatar( 'type=thumb&width=30&height=30' ); ?>
+				<?php echo bp_loggedin_user_avatar( 'type=thumb&width=50&height=50' ); ?>
 
 				<strong><a href="<?php echo $bp->loggedin_user->domain ?>"><?php echo $bp->loggedin_user->fullname ?></a> <span class="activity"><?php printf( __( 'Sent %s', 'buddypress' ), bp_core_time_since( bp_core_current_time() ) ) ?></span></strong>
 

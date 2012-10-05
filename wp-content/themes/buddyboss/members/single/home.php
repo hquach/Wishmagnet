@@ -20,7 +20,22 @@
 				<?php locate_template( array( 'members/single/member-header.php' ), true ) ?>
 			</div><!-- #item-header -->
 
-			<div id="item-nav">				
+			<div id="item-nav">
+                                <div id="item-header-avatar">
+
+                                        <a href="<?php bp_user_link() ?>">
+                                                <?php bp_displayed_user_avatar( 'type=full' ) ?>
+                                        </a>
+
+                                        <span class="activity">		
+                                                <?php if ( is_user_logged_in() && bp_is_my_profile() ) : ?>
+                                                                <a href="<?php echo bp_loggedin_user_domain() ?>profile/edit">Edit My Profile</a>		
+                                                <?php else: ?>
+                                                                <?php bp_last_activity( bp_displayed_user_id() ) ?>		
+                                                <?php endif; ?>	
+                                        </span>
+
+                                </div><!-- #item-header-avatar -->
 				<div class="item-list-tabs no-ajax" id="object-nav">
 					<ul>
 						<?php bp_get_displayed_user_nav() ?>
@@ -36,7 +51,7 @@
 
 			<div id="item-body">
 
-				<?php do_action( 'bp_before_member_body' );
+				<?php do_action( 'bp_before_member_body' );                                                               
 				
 				if ( bp_is_user_activity() || !bp_current_component() ) :
 					locate_template( array( 'members/single/activity.php' ), true );

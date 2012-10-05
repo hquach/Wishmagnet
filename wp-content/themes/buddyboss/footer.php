@@ -1,9 +1,11 @@
 			</div> <!-- #container -->
                         
-                        <div class="wish-feed">
-			   <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Intentions Feed') ) : ?>
-			   <?php endif; ?>
-	                </div>
+                        <?php if ( !is_home() ) : ?>    
+                            <div class="wish-feed">
+                              <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Intentions Feed') ) : ?>
+                              <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
 			
 			<div id="push"></div>
 		
@@ -29,7 +31,7 @@
 		    	</div>
 		    	
 		    	<div id="credits">
-			    	<p>Copyright &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?> &nbsp;&middot;&nbsp; <a href="http://www.buddyboss.com/" target="_blank">BuddyPress Themes by BuddyBoss</a> &nbsp;&middot;&nbsp; <?php wp_loginout( $redirect ); ?></p>
+			    	<p>Copyright &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?> &nbsp;&middot;&nbsp; <?php wp_loginout( $redirect ); ?></p>
 		    	</div>
 	
 				<?php do_action( 'bp_footer' ) ?>

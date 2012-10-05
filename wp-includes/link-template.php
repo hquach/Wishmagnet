@@ -908,10 +908,21 @@ function get_edit_post_link( $id = 0, $context = 'display' ) {
 	if ( !$post_type_object )
 		return;
 
-	if ( !current_user_can( $post_type_object->cap->edit_post, $post->ID ) )
-		return;
-
-	return apply_filters( 'get_edit_post_link', admin_url( sprintf($post_type_object->_edit_link . $action, $post->ID) ), $post->ID, $context );
+        $owner = (bp_get_activity_user_id() == $bp->loggedin_user->id);
+					 
+	if ( (is_super_admin() || ($bp->current_action!="just-me" && $bp->is_item_admin) ||  $owner)){    
+            
+              //return get_option('home').'/post.php?post='.$post->ID.''.$action;
+                //return '?post='.$post->ID.''.$action;         
+                    return '?action=edit';
+            
+        }else if ( !current_user_can( $post_type_object->cap->edit_post, $post->ID ) ) {
+	    return;                               
+        }else {
+            return apply_filters( 'get_edit_post_link', admin_url( sprintf($post_type_object->_edit_link . $action, $post->ID) ), $post->ID, $context );
+        } 
+									
+	
 }
 
 /**
@@ -925,10 +936,10 @@ function get_edit_post_link( $id = 0, $context = 'display' ) {
  * @param int $id Optional. Post ID.
  */
 function edit_post_link( $link = null, $before = '', $after = '', $id = 0 ) {
-	if ( !$post = &get_post( $id ) )
+	if ( !$post = &get_post( $id ) ) 
 		return;
-
-	if ( !$url = get_edit_post_link( $post->ID ) )
+        
+	if ( !$url = get_edit_post_link( $post->ID ) ) 
 		return;
 
 	if ( null === $link )
@@ -952,6 +963,7 @@ function edit_post_link( $link = null, $before = '', $after = '', $id = 0 ) {
  * @return string
  */
 function get_delete_post_link( $id = 0, $deprecated = '', $force_delete = false ) {
+   
 	if ( ! empty( $deprecated ) )
 		_deprecated_argument( __FUNCTION__, '3.0' );
 
@@ -961,15 +973,27 @@ function get_delete_post_link( $id = 0, $deprecated = '', $force_delete = false 
 	$post_type_object = get_post_type_object( $post->post_type );
 	if ( !$post_type_object )
 		return;
-
-	if ( !current_user_can( $post_type_object->cap->delete_post, $post->ID ) )
+        
+        $action = ( $force_delete || !EMPTY_TRASH_DAYS ) ? 'delete' : 'trash';       
+        
+        $owner = (bp_get_activity_user_id() == $bp->loggedin_user->id);
+					 
+	if ( (is_super_admin() || ($bp->current_action!="just-me" && $bp->is_item_admin) ||  $owner)){            
+                                    
+            //$delete_link = get_option('home').'/post.php?post='.$post->ID.'&amp;action='.$action;
+              //$delete_link = '?post='.$post->ID.'&amp;action='.$action;
+                    $delete_link = '?action='.$action;
+            
+	     return '<a href="'.$delete_link.'">Delete this wish</a>';
+             
+        }else if ( !current_user_can( $post_type_object->cap->delete_post, $post->ID ) ) {
 		return;
-
-	$action = ( $force_delete || !EMPTY_TRASH_DAYS ) ? 'delete' : 'trash';
+        }else {
 
 	$delete_link = add_query_arg( 'action', $action, admin_url( sprintf( $post_type_object->_edit_link, $post->ID ) ) );
 
 	return apply_filters( 'get_delete_post_link', wp_nonce_url( $delete_link, "$action-{$post->post_type}_{$post->ID}" ), $post->ID, $force_delete );
+        }
 }
 
 /**

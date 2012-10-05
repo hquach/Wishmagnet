@@ -1,21 +1,5 @@
 <?php do_action( 'bp_before_member_header' ) ?>
 
-<div id="item-header-avatar">
-
-	<a href="<?php bp_user_link() ?>">
-		<?php bp_displayed_user_avatar( 'type=full' ) ?>
-	</a>
-	
-	<span class="activity">		
-		<?php if ( is_user_logged_in() && bp_is_my_profile() ) : ?>
-				<a href="<?php echo bp_loggedin_user_domain() ?>profile/edit">Edit My Profile</a>		
-		<?php else: ?>
-				<?php bp_last_activity( bp_displayed_user_id() ) ?>		
-		<?php endif; ?>	
-	</span>
-	
-</div><!-- #item-header-avatar -->
-
 <div id="item-header-content">
 
 	<h2><a href="<?php bp_displayed_user_link() ?>"><?php bp_displayed_user_fullname() ?></a></h2>

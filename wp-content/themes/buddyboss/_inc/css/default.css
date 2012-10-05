@@ -214,12 +214,12 @@ div#sidebar .padder {
 }
 div#sidebar .widget {
 	margin-bottom: 25px;
-  padding: 10px 12px;
-  overflow:hidden;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  border: 1px solid #c0d3e1;
+    padding: 10px 12px;
+    overflow:hidden;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #686868;
 }
 div#sidebar .widget_recent_entries ul,
 div#sidebar .widget_categories ul,
@@ -229,7 +229,7 @@ div#sidebar .widget_nav_menu ul {
 	color: #b9d4e1;
 	padding-left: 12px;
 	clear: left;
-	* margin-top: -10px; /* IE7 */
+	*margin-top: -10px; /* IE7 */
 }
 .dir-search {
 	position: absolute;
@@ -259,7 +259,9 @@ div#sidebar h3.widgettitle {
 	float: left;
 	width: 100%;
 	margin: -10px -12px 10px;
-	background: #c1dbea url(../images/widgettitle.jpg) repeat-x left top;
+        background: #797877;
+        color: white;
+	/*background: #c1dbea url(../images/widgettitle.jpg) repeat-x left top;*/
 	text-align: left;	
 }
 #wp-calendar caption {
@@ -413,7 +415,7 @@ font-size: 16px;
 margin: 0 0 8px 0;
 }
 div#sidebar div#sidebar-me img.avatar {
-margin: 0 -2px;
+margin: 0 0 0 -7px;
 float: none;
 }
 div#sidebar div#sidebar-me ul#quicklinks {
@@ -505,7 +507,7 @@ div#message-thread strong {
 h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 20px;
 	line-height: 1.5em;
-	color: #555;
+	color: #686868;
 	font-weight: bold;
 }
 h1 { font-size: 28px; }
@@ -517,7 +519,7 @@ h6 { font-size: 12px; }
 
 a {
 	text-decoration: none;
-	color: #497EA8;
+	color: #BD273D;
 }
 a:hover, a:active {
 	text-decoration: underline;
@@ -574,12 +576,15 @@ div#item-body div#subnav.item-list-tabs,
 body.directory div.item-list-tabs,
 body.home-page div.item-list-tabs,
 ul.button-nav, #bps_Form {
-	background-color: #eaf6fd;
+	background-color: lightgrey;
 }
 div#item-body div#subnav.item-list-tabs ul li a,
 div.item-list-tabs ul li a,
 ul.button-nav li a {
-	background-color: #D8EAF3;
+	background: rgba(0, 0, 0, 0.15);
+        /*border: 1px solid #686868;
+        border-bottom: none;*/
+        color: white;
 }
 
 /*--------------------------------------------------------------
@@ -767,10 +772,10 @@ div.post, div#blog-search div.type-page {
 	margin: 0 0 20px;
 	overflow: hidden;
 	clear: left;
-	padding: 4px 2px 22px;
+	padding: 4px 2px 10px;
 }
 div#blog-latest div.post { 
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px dotted #F10A2C;
 }
 div.page h1.pagetitle, h1.posttitle {
 	line-height: 1.3em;
@@ -898,6 +903,8 @@ div.item-options {
 --------------------------------------------------------------*/
 
 img.avatar {
+        width: 60px;
+        margin-left: -5px;
 	float: left;
 	background: #eee;
 	border: 1px solid #ccc;
@@ -969,7 +976,7 @@ img.avatar {
 	overflow: hidden;
 }
 #content .gallery .gallery-item {
-	border: 4px solid #DBE6EA;
+  border: 5px solid #f6d8dd;
   float: left;
   overflow: hidden;
   text-align: center;
@@ -1029,7 +1036,7 @@ h3#reply-title {
 }
 #respond {
 	padding: 2px 20px 22px 16px;
-	background: #ECF3F7;
+	background: #f0d8db;
 }
 a#cancel-comment-reply-link {
 	float: right;
@@ -1134,7 +1141,7 @@ form#whats-new-form #whats-new-content #whats-new-textarea {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  border: 1px solid #C0D3E1;
+  border: 1px solid #555;
 }
 div#whats-new-pic-preview-inner {
 	background-color: #F6F6F6;
@@ -1383,7 +1390,7 @@ div.activity-comments ul {
 	background-image: url(../images/activity-comments-arrow.gif);
 	background-position: top left;
 	background-repeat: no-repeat;
-	background-color: #E8EEF3;
+	background-color: #f0d8db;
 	padding-top: 8px;
 }
 div.activity-comments ul li {
@@ -1570,8 +1577,8 @@ div#message p {
 	font-size: 14px;
 	display:block;
 	font-weight: normal;
-	background-color: #FAF6E4;
-	border: 1px solid #E4DFC6;
+	background-color: #f0d8db;
+	border: 1px solid #dba9b1;
 	color: #555;
 	margin-top: 6px;
 	text-decoration: none;
@@ -2025,7 +2032,7 @@ div#item-header {
 div#item-header, div#item-header-content,
 div#item-body, div#item-header div#message {
 	float: right;
-	width: 820px;
+	width: 800px;
 }
 div#content.two_column div#item-header, div#content.two_column div#item-header-content,
 div#content.two_column div#item-body, div#content.two_column div#item-header div#message {
@@ -2044,10 +2051,7 @@ body.group-forum div#item-header div#message {
 	margin-top: 0;
 }
 div#item-header-avatar {
-	position: absolute;
-	left: -180px;
-	top: 0;
-	width: 152px;
+        width: 152px;
 }	
 div#item-body {
 	margin-top: 5px;
@@ -2090,7 +2094,7 @@ body.buddyboss-active-wall div#subnav.item-list-tabs ul li#favorites-personal-li
 	background-image: url( ../images/icon-like.gif );
 }
 div#subnav.item-list-tabs ul li#my-gallery-personal-li a {
-	background-image: url( ../images/icon-photo.gif );
+	background-image: url( ../images/icon-photo.gif ) !important;
 }
 div#item-body div#subnav.item-list-tabs ul li a,
 div.item-list-tabs ul li a,
@@ -2098,7 +2102,7 @@ ul.button-nav li a {
 	padding: 7px 11px;
 	display: block;
 	margin: 1px 1px 0; /* makes up for no border */
-	color: #666;
+	
 	font-weight: bold;
 	text-decoration: none;
 	-moz-border-radius: 3px 3px 0 0;
@@ -2107,6 +2111,15 @@ ul.button-nav li a {
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
 }
+
+div.item-list-tabs ul li a {
+	padding: 7px 11px;
+	display: block;
+	margin: 1px 1px 0; /* makes up for no border */	
+	font-weight: bold;
+	text-decoration: none;
+}
+
 div#item-body div#subnav.item-list-tabs ul li.selected a,
 div#item-body div#subnav.item-list-tabs ul li.current a,
 div#item-body div#subnav.item-list-tabs ul li a:hover,
@@ -2120,10 +2133,9 @@ ul.button-nav li.current a,
 ul.button-nav li a:hover {
 	background-color: #fff;
 	color: #555;
-	margin: 0;
-	border-top: 1px solid #ddd;
-	border-right: 1px solid #ddd;
-	border-left: 1px solid #ddd;
+	margin: 1px 0 0 0;
+	border: 1px solid #ddd;
+	border-bottom: none;
 }
 div#item-header-content h2 {
 	font-size: 28px;
@@ -2375,7 +2387,7 @@ div#subnav.item-list-tabs ul li.last select {
 body.directory div.item-list-tabs ul li a span {
   display: inline;
   margin-left: 4px;
-  color: #9bb1bd;
+  color: #d37a87;
 }
 ul li.loading a {
 	background-image: url( ../images/ajax-loader.gif );
@@ -2387,15 +2399,19 @@ div#item-nav ul li.loading a {
 	background-position: 88% 50%;
 }
 div#item-nav {
-	float: left;
-	margin-top: 190px;
+    float: left;
+    padding: 10px;
+    background: lightGrey;
+    border-radius: 3px;
+    border: 1px solid #686868;
+
 }
 body.groups.single-item div#item-nav {
 	margin-top: 208px;
 }
 div#object-nav.item-list-tabs,
 div#sub-nav.item-list-tabs {
-	margin-top: 0;
+	margin-top: 10px;
 	overflow: hidden;
 }
 div#object-nav.item-list-tabs li,
@@ -2414,7 +2430,13 @@ div#sub-nav.item-list-tabs li a {
 	padding: 4px 1px;
 	background-color: transparent;
 	margin: 0;
-	color: #497EA8;
+	color: #686868;    
+        text-decoration: none;
+}
+div#object-nav.item-list-tabs li a:hover,
+div#sub-nav.item-list-tabs li a:hover {
+	color: #d37a87;  
+       
 }
 div#object-nav.item-list-tabs li.current a,
 div#object-nav.item-list-tabs li.selected a,
@@ -2423,19 +2445,16 @@ div#sub-nav.item-list-tabs li.selected a {
 	color: #000;
 	font-weight: bold;
 }
-div#object-nav.item-list-tabs li a:hover,
-div#sub-nav.item-list-tabs li a:hover {
-	text-decoration: underline;
-}
+
 div#object-nav.item-list-tabs li a span {
-	color: #a9c2ce;
-  display: inline;
-  font-weight: bold;
-  font-size: 12px;
-  padding: 0 4px;
-  text-decoration: none;
-  float: right;
-  * float: none; /* IE7 only */
+	color: #d37a87;
+        display: inline;
+        font-weight: bold;
+        font-size: 12px;
+        padding: 0 4px;
+        text-decoration: none;
+        float: right;
+        *float: none; /* IE7 only */
 }
 div#subnav.item-list-tabs {
 	background: #fff;
@@ -2508,10 +2527,10 @@ span.activity, span.group-type {
 	display: block;
 	font-size: 11px;
 	margin-top: 4px;
-	color: #999;	
+	color: #BD273D;
 }
 span.activity {
-	line-height: 1.2;
+	line-height: 25px;
 }
 span.group-type {
 	font-weight: bold;
@@ -2610,7 +2629,9 @@ h3#message-subject {
 div#message-thread div.message-box {
 	padding: 15px;
 }
-div#message-thread div.alt {}
+div#message-thread div.alt {
+    background: #F0D8DB;
+}
 div#message-thread p#message-recipients {
 	margin: 0 0 5px 0;
 	padding-bottom: 15px;
@@ -2635,7 +2656,7 @@ div#message-thread div.message-metadata {
 	overflow: hidden;
 }
 div#message-thread div.message-content {
-	margin-left: 45px;
+	margin-left: 68px;
 }
 div#message-thread div.message-options {
 	text-align: right;

@@ -11,9 +11,11 @@ Consider using a child theme: http://www.buddyboss.com/child-themes/
 }
 
 div.wish-create input[type="text"] {
-    height: 15px;
-    padding: 5px;
-    width: 222px;
+    padding: 4.5px;
+    width: 250px;
+    border-radius: 3px;
+    border: none;
+    color: gray;
 }
 
 .notlogged-wish {
@@ -97,24 +99,41 @@ div.close {
 }
 .for_wishes span{
     display: block;
-    height: 25px;
-    padding-left: 25px;
     margin: 3px 0 0 5px;
     font: 12px Arial;
     font-weight: normal;
     line-height: 24px;
 }
-.black_star{
-    background: url('../images/star.png') no-repeat 0 0;
+.wish_list li .for_wishes span{
+    height: 25px;
+    padding-left: 25px;
 }
-.green_star{
-    background: url('../images/star_green.png') no-repeat 0 0;
+.post .for_wishes span{
+    width: 95px;
+    min-height: 35px;
+    padding-left: 35px;
+    
+}
+.wish_list li .for_wishes .black_star{
+    background: url('../images/star.png') no-repeat 0 center;
+}
+.post .black_star{
+    background: url('../images/star_white30.png') no-repeat 0 center;
+    line-height: 34px;
+}
+.wish_list li .for_wishes .green_star{
+    background: url('../images/star_red.png') no-repeat 0 center;
+}
+.post .green_star{
+    background: url('../images/star_red30.png') no-repeat 0 center;
+    line-height: 20px;
+    padding-top: 8px;
 }
 .wishes_info {
     min-width: 71px;
     max-width: 750px;
     padding-top: 10px;    
-    float: left;
+    float: right;
 }
 
 .wish_list a{
@@ -122,6 +141,7 @@ div.close {
     font-size: 18px;
     font-weight: bold; 
     line-height: 25px;
+    color: #686868;
 }
 .wishes_info>span{
     display: block;
@@ -130,15 +150,114 @@ div.close {
     font-size: 12px;
     font-weight: normal; 
     font-style: italic;
+    color: #D37A87;
 }
+.wish-timer h4{
+  margin: 40px 0 10px 0;  
+  color: #d37a87;  
+}
+
+.wish-timer .startstoptime{
+    margin-left: 20px;
+    padding: 5px 10px;    
+}
+
+.wish-timer .timer {
+   margin: 10px 0; 
+}
+
+.wish-timer .timer input{
+    margin-right: 10px;
+    width: 100px;
+}
+
 .wish-stats{  
-  margin: 50px auto; 
-  color: #31536F;
+  margin: 40px auto; 
+  color: #686868;
   font-size: 14px;
   text-align: center;
+}
+
+.wish-stats .stat-num{
+  color: #d37a87;  
+  padding-left: 10px;
   letter-spacing: 1px;
 }
 
 div.widget_recent_intentions{
     margin: 50px 0 20px 0;
+}
+.home-page h1.posttitle {
+    margin-bottom: 10px;
+}
+.posttitle a{
+    color: #686868;    
+}
+.posttitle a:hover{
+    color: #d37a87;
+    text-decoration: none;
+}
+.date a{
+   color: #BD273D; 
+}
+#quicklinks a{
+    color: #686868;    
+}
+#quicklinks a:hover{
+    color: #d37a87;  
+    text-decoration: none;
+}
+#quicklinks li{
+    margin: 2px 0;
+}
+.wish-feed{
+    overflow: hidden;
+}
+#recent-intentions-2{
+    border: 1px solid #686868;
+    min-width: 460px;
+    float: left;
+    padding: 20px;
+    border-radius: 10px;
+}
+.widgettitle{
+    color: #BD273D;
+}
+#setintentionwidget-2>form{
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+.post_desc{
+    float: left;
+    max-width: 575px;
+}
+
+.commentlist .comment-avatar-box, .commentlist .comment-avatar-box img, 
+#message-threads img.avatar, #message-thread img.avatar,.commentlist .comment-avatar-box, 
+.message-box .avatar-box img.avatar{
+    width: 50px;
+}
+#sidebar-me img.avatar, #item-header-avatar img.avatar{
+    width: 160px;
+}
+.activity-inner img.buddyboss-pics-picture{
+    max-width: 500px;
+    max-height: 400px;
+}
+#send-reply .message-box>div{
+    float: left;
+}
+#send-reply .message-box .message-content{
+    margin-top: 30px;
+    margin-left: -104px;
+    width: 700px;
+}
+#send-reply .message-box .message-metadata img.avatar{
+    margin: 30px 10px 0 0;
+}
+
+#blog-archives h3 {
+  margin: 10px 0 30px 0;  
+  color: #BD273D;     
 }

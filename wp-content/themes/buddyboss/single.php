@@ -2,6 +2,16 @@
 
 	<div id="content" class="two_column">
 		<div class="padder">
+                    
+<?php switch($_GET["action"]) {
+    
+    case 'edit':
+    break;
+
+    case 'trash':
+    break;
+    
+}?>                    
 
 			<?php do_action( 'bp_before_blog_single_post' ) ?>
 	
@@ -20,7 +30,10 @@
 						<div class="post-content">
 							<h1 class="posttitle"><?php the_title(); ?></h1>
 		
-							<p class="date"><?php the_date('M j, Y') ?> at <?php the_time() ?> <?php _e( 'in', 'buddypress' ) ?> <?php the_category(', ') ?> <?php printf( __( 'by %s', 'buddypress' ), bp_core_get_userlink( $post->post_author ) ) ?>  <?php edit_post_link( __( 'Edit this entry', 'buddypress' ), '&middot; <span class="edit-link">', '</span>' ); ?></p>
+							<p class="date"><?php the_date('M j, Y') ?> at <?php the_time() ?> <?php _e( 'in', 'buddypress' ) ?> <?php the_category(', ') ?> <?php printf( __( 'by %s', 'buddypress' ), bp_core_get_userlink( $post->post_author ) ) ?>  
+                                                              <?php edit_post_link( __( 'Edit this wish', 'buddypress' ), '&middot; <span class="edit-link">', '</span>' ); ?>
+                                                              <?php echo '&middot; '.get_delete_post_link(get_the_ID()); ?>
+                                                        </p>
 	
 							<div class="entry">
 								<?php the_content( __( 'Read the rest of this entry &rarr;', 'buddypress' ) ); ?>

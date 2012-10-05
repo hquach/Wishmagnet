@@ -741,8 +741,8 @@ function bp_get_loggedin_user_nav() {
  * @global BuddyPress $bp The one true BuddyPress instance
  */
 function bp_get_displayed_user_nav() {
-	global $bp;
-
+	global $bp;                  
+                     
 	foreach ( (array) $bp->bp_nav as $user_nav_item ) {        
 		if ( empty( $user_nav_item['show_for_displayed_user'] ) && !bp_is_my_profile() )
 			continue;
@@ -759,7 +759,8 @@ function bp_get_displayed_user_nav() {
 		}
 
 		echo apply_filters_ref_array( 'bp_get_displayed_user_nav_' . $user_nav_item['css_id'], array( '<li id="' . $user_nav_item['css_id'] . '-personal-li" ' . $selected . '><a id="user-' . $user_nav_item['css_id'] . '" href="' . $link . '">' . $user_nav_item['name'] . '</a></li>', &$user_nav_item ) );
-	}
+	}                                                                
+                
 }
 
 /** Avatars *******************************************************************/

@@ -56,6 +56,10 @@ function bp_get_options_nav() {
 		// echo out the final list item
 		echo apply_filters( 'bp_get_options_nav_' . $subnav_item['css_id'], '<li id="' . $subnav_item['css_id'] . '-' . $list_type . '-li" ' . $selected . '><a id="' . $subnav_item['css_id'] . '" href="' . $subnav_item['link'] . '">' . $subnav_item['name'] . '</a></li>', $subnav_item );
 	}
+        
+                echo '<li id="wishes-personal-li">
+                             <a href="'. get_option('home') .'/author/'.  bp_get_displayed_user_fullname() .'/">Wishes</a></li>';
+        
 }
 
 function bp_get_options_title() {

@@ -7,7 +7,7 @@
 
 		<div class="page" id="blog-archives">
 
-			<h3 class="pagetitle"><?php printf( __( 'You are browsing the archive for %1$s.', 'buddypress' ), wp_title( false, false ) ); ?></h3>
+			<h3 class="pagetitle"><?php printf( __( 'Wishes set by %1$s', 'buddypress' ), wp_title( false, false ) ); ?></h3>
 
 			<?php if ( have_posts() ) : ?>
 
@@ -49,8 +49,8 @@
 
 			<?php else : ?>
 
-				<h2 class="center"><?php _e( 'Not Found', 'buddypress' ) ?></h2>
-				<?php get_search_form() ?>
+				<h5 class="center"><?php _e( 'No Wishes for now', 'buddypress' ) ?></h5>
+				<?php /*get_search_form()*/ ?>
 
 			<?php endif; ?>
 

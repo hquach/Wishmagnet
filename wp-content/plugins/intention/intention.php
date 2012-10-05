@@ -78,9 +78,9 @@ function saveWishTime(){
         $totalseconds+= $time_seconds;        
         $forhuman = secns_to_human($totalseconds);
         
-        $response = '<b>Total Meditated People: </b>'. $totalpeople .'<br />
-            <b>Total Meditated Time: </b>'. $forhuman .'<br />'; 
-        
+        $response = '<b>Total Meditated People: </b><span class="stat-num">'. $totalpeople .'</span><br />
+            <b>Total Meditated Time: </b><span class="stat-num">'. $forhuman .'</span><br />';                       
+           
         echo $response;        
     die();
 }

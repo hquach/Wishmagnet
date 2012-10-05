@@ -145,9 +145,11 @@ class WishTimerWidget extends WP_Widget {
        if ( $title ) echo $before_title . $title . $after_title; 
        else echo '<h4>Start Meditating:</h4>'; ?> 
         
-            <span class='startstoptime'><b>00 : 00</b></span><br />					                                     
+            <span class='startstoptime'><b>00 : 00</b></span>
+            <div class="timer">
               <input type='button' value='Start/Pause' onclick='starttimer();' />
               <input type='button' value='Stop' onclick='startstopReset();' />        
+            </div>
     </div>
     
     <?php       
@@ -161,8 +163,8 @@ class WishTimerWidget extends WP_Widget {
                      ?>
     
        <div class="wish-stats" id="stats">
-            <b>Total Meditated People: </b><?php echo $black_star; ?> <br />
-            <b>Total Meditated Time: </b><?php echo $convert; ?> <br />                     
+            <b>Total Meditated People: </b><span class="stat-num"><?php echo $black_star; ?></span><br />
+            <b>Total Meditated Time: </b><span class="stat-num"><?php echo $convert; ?></span><br />                     
        </div>
       
    <?php   

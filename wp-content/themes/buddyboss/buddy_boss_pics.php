@@ -495,7 +495,7 @@
 	}
 	function get_buddyboss_pic_ajaxlink()
 	{
-		global $bbpics;
+		global $bbpics;               
 		return $bbpics->grid_data[$bbpics->grid_current_pic]['ajaxlink'];
 	}
 	function buddyboss_pics_pagination()

@@ -6,7 +6,6 @@
  * @package BuddyPress
  * @subpackage BuddyBoss
  */
-
 ?>
 
 <div class="item-list-tabs no-ajax" id="subnav" role="navigation">
