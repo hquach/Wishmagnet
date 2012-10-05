@@ -73,13 +73,13 @@
 					<?php while ( buddyboss_has_pics() ) : buddyboss_the_pic(); ?>
 					
 						<?php
-							$image = get_buddyboss_pic_image();
-							$tn = get_buddyboss_pic_tn();
+							$image = get_buddyboss_pic_image();                                                     
+							$tn = get_buddyboss_pic_tn();                                                    
 							if ( is_array( $image ) && !empty( $image ) && is_array( $tn ) && !empty( $tn ) ):
 						?>
 							<li class="gallery-item">
 								<div>
-									<a rel="gal_item" href="<?php echo get_buddyboss_pic_ajaxlink(); ?>">
+                                                                    <a rel="gal_item" href="<?php echo get_buddyboss_pic_permalink(); ?>">
 										<img src="<?php echo $tn[0]; ?>" width="<?php echo $tn[1]; ?>" height="<?php echo $tn[2]; ?>" />
 									</a>
 								</div>

@@ -2079,10 +2079,13 @@ function wp_delete_post( $postid = 0, $force_delete = false ) {
 	$post_meta_ids = $wpdb->get_col( $wpdb->prepare( "SELECT meta_id FROM $wpdb->postmeta WHERE post_id = %d ", $postid ));
 	foreach ( $post_meta_ids as $mid )
 		delete_metadata_by_mid( 'post', $mid );
+        
+        $intention_tbl_name = $wpdb->prefix . 'intentions';
+        $wpdb->delete( $intention_tbl_name, array( 'intention_id' => $postid ) );
 
 	do_action( 'delete_post', $postid );
 	$wpdb->delete( $wpdb->posts, array( 'ID' => $postid ) );
-	do_action( 'deleted_post', $postid );
+	do_action( 'deleted_post', $postid );             
 
 	clean_post_cache( $post );
 

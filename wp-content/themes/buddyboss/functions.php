@@ -46,8 +46,9 @@ if ( ! isset( $content_width ) )
 
 add_action( 'init', 'blockusers_init' );
 function blockusers_init() {  
-    if ( is_admin()) {        
-        if(!isset($_POST['frontendcall']) && ! current_user_can( 'administrator' ) ) {
+
+    if ( is_admin()) {         
+        if(!isset($_REQUEST['action']) && ! current_user_can( 'administrator' ) ) {           
             wp_redirect( home_url() );
             exit;
         }

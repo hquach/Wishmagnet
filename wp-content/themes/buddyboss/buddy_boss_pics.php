@@ -122,19 +122,18 @@
 			$this->redirect_single = (  ( isset( $_GET['buddyboss_ajax_pic'] ) && $_GET['buddyboss_ajax_pic'] === 'true' ) );
 			
 			if ( $this->redirect_single === true )
-			{
-				add_filter( 'bp_activity_permalink_redirect_url', array( $this, 'single_pic_uri' ) );
-			
+			{                               
+                            add_filter( 'bp_activity_permalink_redirect_url', array( $this, 'single_pic_uri' ) );			    
 			}
-			
+			                      
 			// Show single picture without header or footer for inline lightbox
 			$this->show_single = (  ( isset( $_GET['buddyboss_ajax_pic_page'] ) && $_GET['buddyboss_ajax_pic_page'] === 'true' ) );
 			
 			if ( $this->show_single === true )
-			{
-				add_filter( 'bp_activity_template_profile_activity_permalink', array( $this, 'single_pic_template' ) );
-			}
-			
+			{                                       
+				add_filter( 'bp_activity_template_profile_activity_permalink', array( $this, 'single_pic_template' ) );                                
+			}	
+                        
 			return $this;
 		}
 		
