@@ -151,7 +151,9 @@ class WishTimerWidget extends WP_Widget {
     <div class="wish-timer"> 
     <?php
     wp_enqueue_script("startend", get_template_directory_uri() . '/_inc/js/startend.js');
-    wp_localize_script("startend", 'Ajaxobj', array('ajax_url' => admin_url(), 'post_id' => $post_id));
+    wp_localize_script("startend", 'Ajaxobj', array(
+        'ajax_url' => admin_url(), 
+        'post_id' => $post_id));
         
        if ( $title ) echo $before_title . $title . $after_title; 
        else echo '<h4>Start Meditating:</h4>'; ?> 

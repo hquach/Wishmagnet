@@ -29,7 +29,8 @@ function ajaxtoSave(){
             data: ({
                 action: 'saveWishTime',
                 meditime: returnstr,
-                postid: Ajaxobj.post_id
+                postid: Ajaxobj.post_id,
+                frontendcall: 'intention'
             }),
             success: function(resp) {           
                 jQuery("#specialstats").html(resp);
