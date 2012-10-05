@@ -50,8 +50,7 @@ function saveWishTime(){
             $wpdb->prepare("SELECT total_mins FROM $intention_tbl_name WHERE intention_id=$wish_id AND meditater_id=$wisher_id")
           );
     }else { $wish_total = 0; }
-    
-     
+         
         list($minutes, $seconds, $micros) = sscanf($meditime, "%d:%d:%d");
         //$time_seconds = $hours * 3600 + $minutes * 60 + $seconds;
         $time_seconds = $minutes * 60 + $seconds;

@@ -44,13 +44,13 @@ if ( !defined( 'BP_VERSION' ) )
 if ( ! isset( $content_width ) )
 	$content_width = 591;
 
-add_action( 'init', 'blockusers_init' );
+/*add_action( 'init', 'blockusers_init' );
 function blockusers_init() {
     if ( is_admin() && ! current_user_can( 'administrator' ) ) {
         wp_redirect( home_url() );
         exit;
     }
-}
+}*/
 
 if ( !function_exists( 'bp_dtheme_setup' ) ) :
 /**

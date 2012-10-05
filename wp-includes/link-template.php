@@ -907,13 +907,13 @@ function get_edit_post_link( $id = 0, $context = 'display' ) {
 	$post_type_object = get_post_type_object( $post->post_type );
 	if ( !$post_type_object )
 		return;
-
-        $owner = (bp_get_activity_user_id() == $bp->loggedin_user->id);
-					 
-	if ( (is_super_admin() || ($bp->current_action!="just-me" && $bp->is_item_admin) ||  $owner)){    
-            
+        
+        //$owner = (bp_get_activity_user_id() == $bp->loggedin_user->id);
+        $owner = (get_the_author_ID() == get_current_user_id());
+             					 
+	if ( (is_super_admin() || ($bp->current_action!="just-me" && $bp->is_item_admin) ||  $owner)){                 
               //return get_option('home').'/post.php?post='.$post->ID.''.$action;
-                //return '?post='.$post->ID.''.$action;         
+                //return '?post='.$post->ID.''.$action;                          
                     return '?action=edit';
             
         }else if ( !current_user_can( $post_type_object->cap->edit_post, $post->ID ) ) {
@@ -976,7 +976,8 @@ function get_delete_post_link( $id = 0, $deprecated = '', $force_delete = false 
         
         $action = ( $force_delete || !EMPTY_TRASH_DAYS ) ? 'delete' : 'trash';       
         
-        $owner = (bp_get_activity_user_id() == $bp->loggedin_user->id);
+        //$owner = (bp_get_activity_user_id() == $bp->loggedin_user->id);
+         $owner = (get_the_author_ID() == get_current_user_id());
 					 
 	if ( (is_super_admin() || ($bp->current_action!="just-me" && $bp->is_item_admin) ||  $owner)){            
                                     

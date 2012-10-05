@@ -32,7 +32,7 @@ function ajaxtoSave(){
                 postid: Ajaxobj.post_id
             }),
             success: function(resp) {           
-                jQuery("#stats").html(resp);
+                jQuery("#specialstats").html(resp);
             }
     });
 }

@@ -257,7 +257,16 @@ div.widget_recent_intentions{
     margin: 30px 10px 0 0;
 }
 
-#blog-archives h3 {
+#blog-archives h3, #blog-single .wrap h3 {
   margin: 10px 0 30px 0;  
   color: #BD273D;     
 }
+
+#blog-single .wrap input[type="text"], #blog-single .wrap textarea{
+  width: 500px;  
+  color: #333;
+}
+.pinky {
+    color: #D37A87;
+}
+

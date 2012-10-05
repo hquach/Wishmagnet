@@ -37,7 +37,7 @@ class SetIntentionWidget extends WP_Widget {
     
     if(isset($_POST['set_intention'])){
            
-      if ( !is_user_logged_in() ) {            
+      if ( !is_user_logged_in() ) {             
         ?>
             <div id="bpopup">
                 <script type="text/javascript">openPopup();</script>
@@ -64,6 +64,8 @@ class SetIntentionWidget extends WP_Widget {
             </div>    
         <?php                            
       }else if((!empty($_POST['myintention'])) && ($_POST['myintention'] != $_POST['def_texttoshow'])) {   
+          global $wpdb;
+          
           $wisher_id = get_current_user_id();
           $the_wish = array(
             'post_title'    => wp_strip_all_tags( $_POST['myintention'] ),
@@ -72,13 +74,22 @@ class SetIntentionWidget extends WP_Widget {
             'post_author'   => $wisher_id
             );
           
-          wp_insert_post( $the_wish );
-          
-          $redirect_link = get_author_posts_url( $wisher_id , the_author_meta('display_name') );          
-          header("Location: ".$redirect_link);
-
+        $new_post_title = wp_strip_all_tags( $_POST['myintention'] );
+        
+        $checkquery = $wpdb->prepare(
+            'SELECT ID FROM ' . $wpdb->posts . '
+                WHERE post_title = %s AND post_author= %d',                
+                $new_post_title, $wisher_id); 
+               
+        $wpdb->query( $checkquery );
+        
+         if ($wpdb->num_rows == 0) {
+          wp_insert_post( $the_wish );          
+           echo '<p class="pinky">Your intention has been added successfully</p>'; 
+         }
       }    
     }    
+    
     $out ='<form method="post" action="'.$_SERVER["REQUEST_URI"].'">
             <input type="text" name="myintention" id="myintention" value="'.$texttoshow.'" 
                 onfocus=\'if(this.value == "'.$texttoshow.'"){this.value = "";}\' onblur=\'if (this.value == "") {this.value = "'.$texttoshow.'";}\' />
@@ -158,11 +169,10 @@ class WishTimerWidget extends WP_Widget {
       //Stats:                     
                      $black_star = get_total_meditators($post_id);
                      $green_star = get_total_seconds($post_id);                     
-                     $convert = secns_to_human($green_star);   
-                     
+                     $convert = secns_to_human($green_star);                        
                      ?>
     
-       <div class="wish-stats" id="stats">
+       <div class="wish-stats" id="specialstats">
             <b>Total Meditated People: </b><span class="stat-num"><?php echo $black_star; ?></span><br />
             <b>Total Meditated Time: </b><span class="stat-num"><?php echo $convert; ?></span><br />                     
        </div>
