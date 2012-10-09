@@ -67,7 +67,7 @@
 	if ( !$post_type_object )
 		return;                          
         
-        if( get_the_author_ID() != $current_user->ID ) { 
+        if( get_the_author_ID() != $current_user->ID && !is_super_admin()) { 
             echo '<p><b>Sorry, you are not the author of this wish o edit it!</b><br />
                 Edit your own Wish ..</b></p>';
             return;
@@ -98,7 +98,7 @@
 		exit();
 	} 
         
-        if( get_the_author_ID() != $current_user->ID ) {
+        if( get_the_author_ID() != $current_user->ID && !is_super_admin() ) {
             echo '<p><b>Sorry, you are not the author of this wish o delete it.<br />
                 Delete your own Wish ..</b></p>';
             return;
