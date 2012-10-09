@@ -58,7 +58,7 @@ function bp_get_options_nav() {
 	}
         
                 echo '<li id="wishes-personal-li">
-                             <a href="'. get_option('home') .'/author/'.  bp_get_displayed_user_fullname() .'/">Wishes</a></li>';
+                             <a href="'. get_option('home') .'/author/'. bp_get_displayed_user_username() .'/">Wishes</a></li>';
         
 }
 
