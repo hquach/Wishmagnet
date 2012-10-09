@@ -42,7 +42,7 @@ class SetIntentionWidget extends WP_Widget {
             <div id="bpopup">
                 <script type="text/javascript">openPopup();</script>
                 <div class="close"></div>
-                <form name="loginform" id="form_loginform" action="http://wishmagnet.dev/wp-login.php" method="post">
+                <form name="loginform" id="form_loginform" action="wp-login.php" method="post">
                     <div>
                         <label>User:</label>
                         <input type="text" name="log" id="user_login" class="user_input" tabindex="20" />
@@ -51,8 +51,8 @@ class SetIntentionWidget extends WP_Widget {
                         <label>Pass:</label>
                         <input type="password" name="pwd" id="user_pass" class="pass_input" tabindex="21" />
                     </div>
-                    <p id="forgotText"><a href="http://wishmagnet.dev/wp-login.php?action=lostpassword" rel="nofollow">Forgot?</a>
-                                          <a href="http://wishmagnet.dev/wp-login.php?action=register">Register</a></p>
+                    <p id="forgotText"><a href="wp-login.php?action=lostpassword" rel="nofollow">Forgot?</a>
+                                          <a href="wp-login.php?action=register">Register</a></p>
                                           <input type="hidden" name="redirect_to" value="/">
                     <input type="submit" name="wp-submit" id="wp-submit" value="Login" tabindex="23" />
                     
