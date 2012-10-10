@@ -128,24 +128,6 @@ if(isset($_REQUEST['tag']) && $_REQUEST['tag']!='') {
                
            echo json_encode($response);
       
-  } else if($tag == "activity") {
-      if(isset($_REQUEST['number'])) {
-          $number = (int)$_REQUEST['number'];  
-      }else $number = 10;
-      
-      global $bp;
-      
-      if (bp_has_activities()) {
-          
-        $activities = bp_activities();
-      }
-      
-            $response["success"] = 1;       
-            $response["activities"] = $activities;
-          
-            print_r($response);    
-       
-      
   } else {
         echo "Invalid Request";
   }
