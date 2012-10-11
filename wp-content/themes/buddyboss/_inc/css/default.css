@@ -1326,23 +1326,23 @@ body.activity-permalink .activity-content blockquote {
 	text-align: center;
 	font-size: 1.1em;
 	text-decoration: none;
-	border: 1px solid #C0D3E1;
+	border: 1px solid #d3b7ba;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
-	background-color: #c0dae9;
-	background-image: -webkit-linear-gradient(top, #d7e9f3, #c0dae9); 
-	background-image: -moz-linear-gradient(top, #d7e9f3, #c0dae9);
-	background-image: -ms-linear-gradient(top, #d7e9f3, #c0dae9);
-	background-image: -o-linear-gradient(top, #d7e9f3, #c0dae9);
+	background-color: #faecee;
+	background-image: -webkit-linear-gradient(top, #f2e0e2, #faecee); 
+	background-image: -moz-linear-gradient(top, #f2e0e2, #faecee);
+	background-image: -ms-linear-gradient(top, #f2e0e2, #faecee);
+	background-image: -o-linear-gradient(top, #f2e0e2, #faecee);
 }
 .activity-list li.load-more a:hover {
 	text-decoration: none;
-	background-color: #cce8f4;
-	background-image: -webkit-linear-gradient(top, #d9f1fc, #cce8f4); 
-	background-image: -moz-linear-gradient(top, #d9f1fc, #cce8f4);
-	background-image: -ms-linear-gradient(top, #d9f1fc, #cce8f4);
-	background-image: -o-linear-gradient(top, #d9f1fc, #cce8f4);
+	background-color: #efd3d6;
+	background-image: -webkit-linear-gradient(top, #f5e2e4, #efd3d6); 
+	background-image: -moz-linear-gradient(top, #f5e2e4, #efd3d6);
+	background-image: -ms-linear-gradient(top, #f5e2e4, #efd3d6);
+	background-image: -o-linear-gradient(top, #f5e2e4, #efd3d6);
 }
 
 /*--------------------------------------------------------------
