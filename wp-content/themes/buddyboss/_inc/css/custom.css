@@ -58,6 +58,10 @@ div.close {
     display: block;
     margin-top: 15px;
 }
+.home-page .fbLoginButton{
+    margin-bottom: 10px;
+    margin-left: 20px;    
+}
 #form_loginform{
     padding: 20px;
 }
@@ -94,24 +98,21 @@ div.close {
     clear: both;   
 }
 
-.for_wishes{
+.for_wishes, .author_wishes{
     display: block;
     min-width: 124px;
     float: left;
     margin-right: 20px;
 }
-.for_wishes span{
+.for_wishes span, .author_wishes span{
     display: block;
     margin: 3px 0 0 5px;
     font: 12px Arial;
     font-weight: normal;
     line-height: 24px;
 }
-/*
-ul.wish_list li{
-    margin: 10px 0;
-}*/
-.wish_list li .for_wishes span{
+
+.wish_list li .for_wishes span, .author_wishes span{
     height: 25px;
     padding-left: 25px;
 }
@@ -121,25 +122,25 @@ ul.wish_list li{
     padding-left: 35px;
     
 }
-.wish_list li .for_wishes .black_star{
+.wish_list li .for_wishes .black_star, .author_wishes .black_star{
     background: url('../images/star.png') no-repeat 0 center;
 }
-.post .black_star{
+.post .for_wishes .black_star{
     background: url('../images/star_white30.png') no-repeat 0 center;
     line-height: 34px;
 }
-.wish_list li .for_wishes .green_star{
+.wish_list li .for_wishes .green_star, .author_wishes .green_star{
     background: url('../images/star_red.png') no-repeat 0 center;
 }
-.post .green_star{
+.post .for_wishes .green_star{
     background: url('../images/star_red30.png') no-repeat 0 center;
     line-height: 20px;
     padding-top: 8px;
 }
-.wish_list li .for_wishes .real_star{
+.wish_list li .for_wishes .real_star, .author_wishes .real_star{
     background: url('../images/star_org.png') no-repeat 0 center;
 }
-.post .real_star{
+.post .for_wishes .real_star{
     background: url('../images/star_org30.png') no-repeat 0 center;
     line-height: 20px;
     padding-top: 8px;
@@ -429,6 +430,38 @@ div.widget_recent_intentions{
 #red2{
     margin-left: 60px;
     background: url('../images/star_red.png') no-repeat 0 0;
+}
+#subnav .cnt {
+     font-weight: normal;
+     padding: 0 4px;   
+     color: #000;
+}
+#subnav ul li.current .cnt, #subnav ul li:hover .cnt{
+    color: #D37A87;
+}
+.intentions {
+    padding: 20px;
+}
+.intentions .post{
+  border-bottom: 1px dotted gray;  
+}
+
+.intentions h1.posttitle{
+  margin-bottom: 5px; 
+  font-size: 16px;
+}
+
+.intentions .post .date{
+    margin-bottom: 10px;
+}
+
+.intentions .post .post-content {
+    margin-left: 144px;
+}
+
+.intentions .post .entry{
+    font-size: 12px;
+
 }
 
 

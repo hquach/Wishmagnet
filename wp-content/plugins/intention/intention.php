@@ -34,10 +34,23 @@ function intention_profile_menu() {
     global $wpdb, $bp;
     $displayed_user_id = $bp->displayed_user->id;
     $posts_table = $wpdb->prefix."posts";   
+    $intentions_table = $wpdb->prefix."intentions";
     
     $sql = "SELECT COUNT(*) as intention_count FROM $posts_table WHERE post_author = %d AND post_status='publish' AND post_type='post'";
 			$sql = $wpdb->prepare( $sql, $displayed_user_id );                        
-    $intentions_cnt = $wpdb->get_var( $sql );  
+    $intentions_cnt = $wpdb->get_var( $sql );
+    
+    $meditonsql = "SELECT $posts_table.* 
+                    FROM $posts_table LEFT JOIN $intentions_table ON $posts_table.ID=intention_id 
+                    WHERE $intentions_table.meditater_id = %d AND $posts_table.post_status='publish' AND $posts_table.post_type='post' 
+                    GROUP BY $posts_table.ID";
+                        $meditonsql = $wpdb->prepare( $meditonsql, $displayed_user_id );                       
+    $wpdb->get_results( $meditonsql );
+    $mediton_cnt = $wpdb->num_rows;
+    
+    $meditotalsql = "SELECT SUM(total_mins) FROM $intentions_table WHERE meditater_id = %d";
+                        $meditotalsql = $wpdb->prepare( $meditotalsql, $displayed_user_id ); 
+    $meditime_sum = secns_to_human($wpdb->get_var( $meditotalsql ));    
     
 			bp_core_new_nav_item( array(
 				'name' => sprintf( 'Intentions <span>%d</span>', $intentions_cnt),
@@ -50,7 +63,7 @@ function intention_profile_menu() {
                         $parent_url = $bp->displayed_user->domain . 'intentions/';
                         
 			bp_core_new_subnav_item( array(
-				'name' => 'My Intentions',
+				'name' => sprintf( 'My Intentions <span class="cnt">%d</span>', $intentions_cnt),
 				'slug' => 'my-wishes',
 				'parent_slug' => 'intentions',
                                 'parent_url' => $parent_url,
@@ -59,8 +72,8 @@ function intention_profile_menu() {
                             
 			));                        
                         bp_core_new_subnav_item( array(
-				'name' => 'Intentions meditated on',
-				'slug' => 'meditated',
+				'name' => sprintf( 'Intentions meditated on <span class="cnt">%d</span>', $mediton_cnt),
+				'slug' => 'mediton',
 				'parent_slug' => 'intentions',	
                                 'parent_url' => $parent_url,
 				'screen_function' => 'intentions_user_grid',
@@ -68,27 +81,29 @@ function intention_profile_menu() {
                             
 			));                        
                         bp_core_new_subnav_item( array(
-				'name' => 'Total Meditated Time',
-				'slug' => 'tottime',
+				'name' => sprintf( 'Total Meditated Time <span class="cnt">%s</span>', $meditime_sum),
+				'slug' => 'meditime',
 				'parent_slug' => 'intentions',
                                 'parent_url' => $parent_url,
 				'screen_function' => 'intentions_user_grid',
 				'position' => 30
-			));                        
-                              
-    
+			));                                                      
 }
 add_action( 'bp_setup_nav', 'intention_profile_menu' ); 
 
-function intentions_user_grid_content() {
-		global $bp, $wpdb;
-                echo '1111';
-}
+    function intentions_user_grid_title() {              
+    }
 
-function intentions_user_grid() {		
-		add_action( 'bp_template_content', 'intentions_user_grid_content' );		
-		bp_core_load_template( 'members/single/intentions' );
-}
+    function intentions_user_grid_content() {	
+    }
+
+    function intentions_user_grid() {
+                add_action( 'bp_template_title', 'intentions_user_grid_title' );
+		add_action( 'bp_template_content', 'intentions_user_grid_content' );			
+                bp_core_load_template( apply_filters( 'bp_core_template_plugin', 'members/single/intentions' ) );
+    }
+
+
   
 function listIntentions() {
     global $wpdb;
