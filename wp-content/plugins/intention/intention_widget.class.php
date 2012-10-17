@@ -149,7 +149,8 @@ class WishTimerWidget extends WP_Widget {
     ?>
     
     <div class="wish-timer"> 
-    <?php
+    <?php   
+    
     wp_enqueue_script("startend", get_template_directory_uri() . '/_inc/js/startend.js');
     wp_localize_script("startend", 'Ajaxobj', array(
         'ajax_url' => admin_url(), 
@@ -166,19 +167,33 @@ class WishTimerWidget extends WP_Widget {
     </div>
     
     <?php       
-      }
-     
-      //Stats:                     
+      }     
+      //Stats:       
+                     $real_star = get_real_meditators($post_id);
                      $black_star = get_total_meditators($post_id);
                      $green_star = get_total_seconds($post_id);                     
                      $convert = secns_to_human($green_star);                        
-                     ?>
-    
+     ?>    
        <div class="wish-stats" id="specialstats">
-            <b>Total Meditated People: </b><span class="stat-num"><?php echo $black_star; ?></span><br />
-            <b>Total Meditated Time: </b><span class="stat-num"><?php echo $convert; ?></span><br />                     
+         <span class="autowidth">  
+           <ul>
+               <li id="orange"><b>Currently Meditating People:</b> 
+                   <span class="stat-num"><span id="realtime_stat"><?php echo $real_star; ?>
+                        <?php if($real_star > 0) { the_widget('WhosMeditatingWidget'); }?> 
+                    </span></span>
+               </li>
+               <li id="white"><b>Total Meditated People:</b> 
+                   <span class="stat-num"><?php echo $black_star; ?>
+                        <?php if($black_star > 0) { the_widget('WhoMeditatedWidget'); }?>             
+                    </span>
+               </li>
+               <li id="red"><b>Total Collective Meditated Time:</b> 
+                   <span class="stat-num"><?php echo $convert; ?></span>
+               </li>
+           </ul>                                  
+        </span>
        </div>
-      
+    
    <?php   
     }
     echo $after_widget;
@@ -213,22 +228,49 @@ class Recent_Intentions extends WP_Widget {
 		}
 
 		ob_start();
-		extract($args);
+		extract($args);                
 
 		$title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Intentions') : $instance['title'], $instance, $this->id_base);
 		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
  			$number = 10;
-
-		$r = new WP_Query( apply_filters( 'widget_posts_args', array( 'posts_per_page' => $number, 'no_found_rows' => true, 'post_status' => 'publish', 'ignore_sticky_posts' => true ) ) );
-		if ($r->have_posts()) :
 ?>
-		<?php echo $before_widget; ?>
-		<?php if ( $title ) echo $before_title . $title . $after_title; ?>               
+<?php           
+                echo $before_widget; 
+    wp_enqueue_script("sortintention", get_template_directory_uri() . '/_inc/js/sortintention.js');
+    wp_localize_script("sortintention", 'Recentobj', array(
+        'ajax_url' => admin_url()));    
+?>
+            <?php if ( $title ) echo $before_title . $title . $after_title; ?>
     
+                <form action="" method="post">
+			<div class="intention-sort-tabs">
+				<ul>
+					<li id="intentions-orderby" class="last filter">
+
+						<label for="intentions-orderby"><?php _e( 'Order By:', 'buddypress' ); ?></label>
+						<select id="intentions-orderby-select">
+                                                        <option value="newest" selected>Newest Intentions</option>
+							<option value="current">Current Mediators</option>
+                                                        <option value="past">Total Mediators</option>
+                                                        <option value="time">Total Collective Meditation Time</option>
+						</select>
+					</li>
+
+				</ul>
+			</div>
+                </form>          
+                        
+                        
+                        <div id="intentions-list">
+<?php
+              $r = new WP_Query( apply_filters( 'widget_posts_args', array( 'posts_per_page' => $number, 'no_found_rows' => true, 'post_status' => 'publish', 'ignore_sticky_posts' => true ) ) );
+		if ($r->have_posts()) : ?>
+                    
 		  <ul class="wish_list">
 		  <?php  while ($r->have_posts()) : $r->the_post(); ?>
                     
                    <?php 
+                     $real_star = get_real_meditators(get_the_ID());
                      $black_star = get_total_meditators(get_the_ID());
                      $green_star = get_total_seconds(get_the_ID());                     
                      $convert = secns_to_human($green_star);                    
@@ -236,6 +278,7 @@ class Recent_Intentions extends WP_Widget {
 		
                     <li>
                         <span class="for_wishes">
+                            <span class="real_star"><?php echo $real_star; ?> people</span>
                             <span class="black_star"><?php echo $black_star; ?> people</span>
                             <span class="green_star"><?php echo $convert; ?></span>                          
                         </span>
@@ -246,15 +289,25 @@ class Recent_Intentions extends WP_Widget {
                     </li>
                     
 		<?php endwhile; ?>
-		</ul>
-    
-		<?php echo $after_widget; ?>
+		</ul> 
+                            
+                <div class="stars_footer">
+                  <ul>
+                    <li id="or2">Total people currently meditating</li>
+                    <li id="wh2" > Total people meditated</li>
+                    <li id="red2"> Total collective meditation time</li>
+                  </ul>
+                </div>                                           		
 <?php
 		// Reset the global $the_post as this query will have stomped on it
 		wp_reset_postdata();
-
-		endif;
-
+		endif;                                 
+?>
+                        </div>
+    
+                      <?php echo $after_widget; ?> 
+    
+<?php
 		$cache[$args['widget_id']] = ob_get_flush();
 		wp_cache_set('widget_recent_intentions', $cache, 'widget');
 	}
@@ -288,5 +341,142 @@ class Recent_Intentions extends WP_Widget {
 <?php
 	}
       
+}
+
+class WhosMeditatingWidget extends WP_Widget {
+    
+  function WhosMeditatingWidget() {
+    $widget_ops = array(
+        'classname' => 'WhosMeditatingWidget',
+        'description' => 'Show users who are meditating right now'
+    );  
+    
+    $this->WP_Widget('WhosMeditatingWidget', 'Who is Meditating', $widget_ops);
+  }
+  
+  function form($instance){
+    $defaults = array( 'seewho' => 'see who' );
+    $instance = wp_parse_args( (array) $instance, $defaults ); 
+  ?>
+    <p>
+      <label for="<?php echo $this->get_field_id('seewho'); ?>">Link To Show mediators: 
+        <input type="text" name="<?php echo $this->get_field_name('seewho'); ?>" id="<?php echo $this->get_field_id('seewho'); ?>" value="<?php echo attribute_escape( $instance['seewho'] ); ?>" class="widefat" />
+      </label>
+    </p>
+  <?php      
+  }
+  
+  function update($new_instance, $old_instance){
+    $instance = $old_instance;
+    $instance['seewho'] = $new_instance['seewho'];
+    
+    return $instance;      
+  }
+  
+  function widget($args, $instance){
+    extract($args);
+    
+    global $wpdb, $post_id;
+    $realtime_tbl_name = $wpdb->prefix . 'realtime_medit'; 
+    
+    if(isset($post_id) && $post_id > 0) {?>
+      <button id="my-first" onclick="openPopup1();">see who</button>
+      
+      <div id="first_to_pop_up">              
+                <div class="close"></div>
+                
+                  <div class="avatar-block">
+<?php        
+          $meditIDs = $wpdb->get_col( 
+                  $wpdb->prepare("SELECT DISTINCT(meditater_id) FROM $realtime_tbl_name WHERE intention_id = $post_id"));
+          
+          foreach ( $meditIDs as $userID ) :
+?>                  
+          <div class="item-avatar">            
+                <a href="<?php echo bp_core_get_user_domain( $userID ) ?>" 
+                    title="<?php echo bp_core_get_user_displayname( $userID ) ?>">
+                    <?php echo bp_core_fetch_avatar ( array( 'item_id' => $userID ) ) ?>
+                    <?php echo bp_core_get_user_displayname( $userID ); ?>
+                </a>              
+          </div> 
+                             
+          <?php endforeach; ?>
+                             
+			</div> 
+       </div>                
+    <?php } ?>
+                        
+<?php                                         
+  }
+  
+}
+
+class WhoMeditatedWidget extends WP_Widget {
+    
+  function WhoMeditatedWidget() {
+    $widget_ops = array(
+        'classname' => 'WhoMeditatedWidget',
+        'description' => 'Show users who already meditated'
+    );  
+    
+    $this->WP_Widget('WhoMeditatedWidget', 'Who already Meditated', $widget_ops);
+  }
+  
+  function form($instance){
+    $defaults = array( 'seewho' => 'see who' );
+    $instance = wp_parse_args( (array) $instance, $defaults ); 
+  ?>
+    <p>
+      <label for="<?php echo $this->get_field_id('seewho'); ?>">Link To Show mediators: 
+        <input type="text" name="<?php echo $this->get_field_name('seewho'); ?>" id="<?php echo $this->get_field_id('seewho'); ?>" value="<?php echo attribute_escape( $instance['seewho'] ); ?>" class="widefat" />
+      </label>
+    </p>
+  <?php      
+  }
+  
+  function update($new_instance, $old_instance){
+    $instance = $old_instance;
+    $instance['seewho'] = $new_instance['seewho'];
+    
+    return $instance;      
+  }
+  
+  function widget($args, $instance){
+    extract($args);
+    
+    global $wpdb, $post_id;
+    $intention_tbl_name = $wpdb->prefix . 'intentions'; 
+    
+    if(isset($post_id) && $post_id > 0) {?>
+    
+      <button id="my-button" onclick="openPopup2();">see who</button>
+      
+      <div id="element_to_pop_up">              
+                <div class="close"></div>
+                
+                  <div class="avatar-block">
+<?php        
+          $meditIDs = $wpdb->get_col( 
+                  $wpdb->prepare("SELECT DISTINCT(meditater_id) FROM $intention_tbl_name WHERE intention_id = $post_id"));
+          
+          foreach ( $meditIDs as $userID ) :     
+?>                  
+          <div class="item-avatar">            
+                <a href="<?php echo bp_core_get_user_domain( $userID ) ?>" 
+                    title="<?php echo bp_core_get_user_displayname( $userID ) ?>">
+                    <?php echo bp_core_fetch_avatar ( array( 'item_id' => $userID ) ) ?>
+                    <?php echo bp_core_get_user_displayname( $userID ); ?>
+                </a>              
+          </div> 
+                             
+          <?php endforeach; ?>
+                             
+			</div> 
+       </div>                
+    <?php } ?>
+                        
+<?php                                       
+  }
+  
 }
 ?>

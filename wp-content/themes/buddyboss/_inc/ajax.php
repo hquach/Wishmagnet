@@ -87,6 +87,8 @@ function bp_dtheme_object_template_loader() {
 	locate_template( array( "$object/$object-loop.php" ), true );
 }
 add_action( 'wp_ajax_members_filter', 'bp_dtheme_object_template_loader' );
+add_action( 'wp_ajax_nopriv_members_filter', 'bp_dtheme_object_template_loader' );
+
 add_action( 'wp_ajax_groups_filter', 'bp_dtheme_object_template_loader' );
 add_action( 'wp_ajax_blogs_filter', 'bp_dtheme_object_template_loader' );
 add_action( 'wp_ajax_forums_filter', 'bp_dtheme_object_template_loader' );
@@ -129,7 +131,10 @@ function bp_dtheme_activity_template_loader() {
 	echo json_encode( $result );
 }
 add_action( 'wp_ajax_activity_widget_filter', 'bp_dtheme_activity_template_loader' );
+add_action( 'wp_ajax_nopriv_activity_widget_filter', 'bp_dtheme_activity_template_loader' );
+
 add_action( 'wp_ajax_activity_get_older_updates', 'bp_dtheme_activity_template_loader' );
+add_action( 'wp_ajax_nopriv_activity_get_older_updates', 'bp_dtheme_activity_template_loader' );
 
 /* AJAX update posting */
 function bp_dtheme_post_update() {

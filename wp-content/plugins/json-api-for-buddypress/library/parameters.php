@@ -28,7 +28,7 @@ $aParams = array (
     ),        
     'profile' => array (
         'string' => array (
-            'username' => false
+            'username' => false         
         )
     ),
     'message' => array (

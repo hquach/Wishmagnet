@@ -300,6 +300,28 @@ function bp_dtheme_widgets_init() {
 			'after_widget'  => '</div>',
 			'before_title'  => '<h3 class="widgettitle">',
 			'after_title'   => '</h3>'
+		) );
+        
+        //Custom Area 13, that will show whos meditating right now
+        register_sidebar( array(
+			'name'          => 'Current Mediators',
+			'id'          	=> 'current-mediators',
+			'description'   => 'Widget to show current mediators',
+			'before_widget' => '',
+			'after_widget'  => '',
+			'before_title'  => '',
+			'after_title'   => ''
+		) );
+        
+        //Custom Area 14, that will show whos meditating right now
+        register_sidebar( array(
+			'name'          => 'Past Mediators',
+			'id'          	=> 'past-mediators',
+			'description'   => 'Widget to show already meditated users',
+			'before_widget' => '',
+			'after_widget'  => '',
+			'before_title'  => '',
+			'after_title'   => ''
 		) );        
 }
 add_action( 'widgets_init', 'bp_dtheme_widgets_init' );

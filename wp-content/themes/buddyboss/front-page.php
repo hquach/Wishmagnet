@@ -9,11 +9,12 @@
 				
 				<div id="content" <?php if ( is_active_sidebar('home-right') ) : ?>class="three_column"<?php else : ?> class="two_column_left"<?php endif; ?>>
 				<div class="padder">
-					<div class="page" id="blog-latest">
+					<div class="page" id="blog-latest">                                                                
 					
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                                             
                                           <?php 
+                                            $real_star = get_real_meditators(get_the_ID());
                                             $black_star = get_total_meditators(get_the_ID());
                                             $green_star = get_total_seconds(get_the_ID());                     
                                             $convert = secns_to_human($green_star);                    
@@ -22,6 +23,7 @@
 						<div class="post" id="post-<?php the_ID(); ?>">
                                                     
                                                     <span class="for_wishes">
+                                                        <span class="real_star"><?php echo $real_star; ?> people</span>
                                                         <span class="black_star"><?php echo $black_star; ?> people</span>
                                                         <span class="green_star"><?php echo $convert; ?></span>                          
                                                     </span>

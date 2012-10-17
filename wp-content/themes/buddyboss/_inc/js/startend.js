@@ -8,11 +8,17 @@ startstopTimer = jQuery.timer(function() {
 		jQuery('.startstoptime').html(output+" : "+ sec +" : "+micro);
                 returnstr = output+":"+ sec +":"+micro;
 		startstopCurrent+=7;
-	}, 70, false);
-        
+	}, 70, false);                              
+  
+function askConfirm() {        
+        return "You have to press Stop, otherwise your meditation won't be calculated!";           
+}   
+
 function starttimer() {
   startstopTimer.toggle();    
-  //startstopTimer.play();    
+  //startstopTimer.play(); 
+  realtimetoSave(); 
+  window.onbeforeunload = askConfirm;      
 }
 
 function startstopReset() {     
@@ -20,6 +26,7 @@ function startstopReset() {
 	startstopTimer.stop().once();              
         //startstopTimer.stop();
         ajaxtoSave();
+        window.onbeforeunload = null;
 }
 
 function ajaxtoSave(){    
@@ -34,6 +41,20 @@ function ajaxtoSave(){
             }),
             success: function(resp) {           
                 jQuery("#specialstats").html(resp);
+            }
+    });
+}
+
+function realtimetoSave(){    
+     jQuery.ajax({
+            url: Ajaxobj.ajax_url + 'admin-ajax.php',
+            type : 'POST',
+            data: ({
+                action: 'saveRealTime',          
+                postid: Ajaxobj.post_id           
+            }),
+            success: function(resp) {           
+                jQuery("#realtime_stat").html(resp);
             }
     });
 }
