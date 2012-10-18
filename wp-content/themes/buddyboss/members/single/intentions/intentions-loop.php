@@ -1,12 +1,12 @@
 <?php     
     global $bp; 
     $author_query = 'author='.$bp->displayed_user->id;
+    $posts_array = get_posts( $author_query );
 ?>
-<?php query_posts($author_query); ?>
 
-			<?php if ( have_posts() ) : ?>		
+			<?php if ( $posts_array ) : ?>		
 
-				<?php while (have_posts()) : the_post(); ?>
+				<?php foreach( $posts_array as $post ) : setup_postdata($post); ?>                                
 					
                                           <?php 
                                             $real_star = get_real_meditators(get_the_ID());
@@ -41,7 +41,7 @@
 	
 					</div>
 					
-				<?php endwhile; ?>
+				<?php endforeach; ?>
 
 				<?php bp_dtheme_content_nav( 'nav-below' ); ?>
 
@@ -52,5 +52,3 @@
                                 </div>
 
 			<?php endif; ?>
-
-<?php wp_reset_query(); ?>

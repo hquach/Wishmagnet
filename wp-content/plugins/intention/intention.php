@@ -41,9 +41,10 @@ function intention_profile_menu() {
     $intentions_cnt = $wpdb->get_var( $sql );
     
     $meditonsql = "SELECT $posts_table.* 
-                    FROM $posts_table LEFT JOIN $intentions_table ON $posts_table.ID=intention_id 
+                    FROM $posts_table LEFT JOIN $intentions_table ON $posts_table.ID=$intentions_table.intention_id 
                     WHERE $intentions_table.meditater_id = %d AND $posts_table.post_status='publish' AND $posts_table.post_type='post' 
-                    GROUP BY $posts_table.ID";
+                    GROUP BY $posts_table.ID ORDER BY $posts_table.post_date DESC";  
+          
                         $meditonsql = $wpdb->prepare( $meditonsql, $displayed_user_id );                       
     $wpdb->get_results( $meditonsql );
     $mediton_cnt = $wpdb->num_rows;
