@@ -1,5 +1,5 @@
 <?php
-    global $wpdb, $bp; 
+    global $wpdb, $bp, $wp_query;     
     $intentions_table = $wpdb->prefix . 'intentions';
     $displayed_user_id = $bp->displayed_user->id;     
           
@@ -9,7 +9,19 @@
                     GROUP BY $wpdb->posts.ID ORDER BY $wpdb->posts.post_date DESC";
     
     $meditonsql = $wpdb->prepare( $meditonsql, $displayed_user_id );
-    $usermeditons = $wpdb->get_results( $meditonsql, OBJECT_K );
+    $totalusermeditons = $wpdb->get_results( $meditonsql, OBJECT_K );
+    
+    $per_page = intval(get_query_var('posts_per_page'));
+    $wp_query->found_posts = count($totalusermeditons); 
+    
+    $wp_query->max_num_pages = ceil($wp_query->found_posts / $per_page);
+    $on_page = intval(get_query_var('paged'));
+
+    if($on_page == 0){ $on_page = 1; }
+    $offset = ($on_page-1) * $per_page;
+    
+    $wp_query->request = $meditonsql . " LIMIT $per_page OFFSET $offset";
+    $usermeditons = $wpdb->get_results($wp_query->request, OBJECT_K);
     
     if($usermeditons) :
               foreach( $usermeditons as $post ) : setup_postdata($post); ?>
@@ -48,6 +60,8 @@
 					</div>
         
         <?php endforeach; ?>
+
+        <?php bp_dtheme_content_nav( 'nav-below' ); ?>
         
     <?php else : ?>
                                 <div id="message" class="info">

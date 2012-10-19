@@ -1,13 +1,17 @@
-<?php     
-    global $bp; 
-    $author_query = 'author='.$bp->displayed_user->id;
-    $posts_array = get_posts( $author_query );
+<?php 
+    global $bp;                
+    $args = array( 
+        'author'=> $bp->displayed_user->id, 
+        'posts_per_page' => 10,                 
+        'paged' => ( get_query_var('paged') ? get_query_var('paged') : 1 ),
+      );
+    
+      query_posts($args);  
 ?>
+    
+    <?php if (have_posts() ) : ?>
+        <?php while (have_posts()) : the_post(); ?>
 
-			<?php if ( $posts_array ) : ?>		
-
-				<?php foreach( $posts_array as $post ) : setup_postdata($post); ?>                                
-					
                                           <?php 
                                             $real_star = get_real_meditators(get_the_ID());
                                             $black_star = get_total_meditators(get_the_ID());
@@ -40,10 +44,11 @@
 						</div>
 	
 					</div>
-					
-				<?php endforeach; ?>
+  
+        <?php endwhile; ?>
+    
+        <?php bp_dtheme_content_nav( 'nav-below' ); ?>
 
-				<?php bp_dtheme_content_nav( 'nav-below' ); ?>
 
 			<?php else : ?>
 
@@ -52,3 +57,11 @@
                                 </div>
 
 			<?php endif; ?>
+
+<?php wp_reset_query(); ?>
+
+
+  
+
+
+

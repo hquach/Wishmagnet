@@ -439,6 +439,26 @@ div.widget_recent_intentions{
 #subnav ul li.current .cnt, #subnav ul li:hover .cnt{
     color: #D37A87;
 }
+#intention-summary {
+    margin-left: 100px;
+    letter-spacing: 1px;
+}
+#intention-summary ul {
+    list-style-type: circle;
+}
+#intention-summary ul li{
+    margin-top: 10px;
+}
+#intention-summary span {
+    color: #D37A87;     
+}
+#intention-summary div {   
+    color: #666;
+    font-weight:bold; 
+    margin-right: 10px;
+    display: inline;
+}
+
 .intentions {
     padding: 20px;
 }

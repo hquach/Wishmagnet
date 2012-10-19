@@ -58,37 +58,39 @@ function intention_profile_menu() {
 				'slug' => 'intentions',
 				'position' => 40,
 				'screen_function' => 'intentions_user_grid',
-                                'default_subnav_slug' => 'my-wishes'
+                                'default_subnav_slug' => 'summary'
 			));   
                                                
-                        $parent_url = $bp->displayed_user->domain . 'intentions/';
+                        $parent_url = $bp->displayed_user->domain . 'intentions/';  
                         
 			bp_core_new_subnav_item( array(
-				'name' => sprintf( 'My Intentions <span class="cnt">%d</span>', $intentions_cnt),
-				'slug' => 'my-wishes',
+				'name' => 'Summary',
+				'slug' => 'summary',
 				'parent_slug' => 'intentions',
                                 'parent_url' => $parent_url,
 				'screen_function' => 'intentions_user_grid',
 				'position' => 10
                             
-			));                        
-                        bp_core_new_subnav_item( array(
-				'name' => sprintf( 'Intentions meditated on <span class="cnt">%d</span>', $mediton_cnt),
-				'slug' => 'mediton',
-				'parent_slug' => 'intentions',	
+			));                         
+                        
+			bp_core_new_subnav_item( array(
+				'name' => sprintf( 'Intentions Set <span class="cnt">%d</span>', $intentions_cnt),
+				'slug' => 'wishes',
+				'parent_slug' => 'intentions',
                                 'parent_url' => $parent_url,
 				'screen_function' => 'intentions_user_grid',
 				'position' => 20
                             
 			));                        
                         bp_core_new_subnav_item( array(
-				'name' => sprintf( 'Total Meditated Time <span class="cnt">%s</span>', $meditime_sum),
-				'slug' => 'meditime',
-				'parent_slug' => 'intentions',
+				'name' => sprintf( 'Intentions Meditated On <span class="cnt">%d</span>', $mediton_cnt),
+				'slug' => 'mediton',
+				'parent_slug' => 'intentions',	
                                 'parent_url' => $parent_url,
 				'screen_function' => 'intentions_user_grid',
 				'position' => 30
-			));                                                      
+                            
+			));                                                                                       
 }
 add_action( 'bp_setup_nav', 'intention_profile_menu' ); 
 

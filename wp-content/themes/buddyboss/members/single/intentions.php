@@ -47,21 +47,26 @@
                                         </ul>
                                     </div>
                                     
+                                     <div class="members intentions"> 
+                                    
 
-<?php            
+<?php        
+
     if ( bp_is_current_action( 'mediton' ) ) :
 	   locate_template( array( 'members/single/intentions/mediton.php' ), true );
     
     elseif ( bp_is_current_action( 'meditime' ) ) :
            locate_template( array( 'members/single/intentions/meditime.php' ), true );
     
-    else :
+    elseif ( bp_is_current_action( 'wishes' ) ) :
+           locate_template( array( 'members/single/intentions/intentions-loop.php' ), true );    
+    
+    else :                    
+           locate_template( array( 'members/single/intentions/summary.php' ), true );
 ?>
-        <div class="members intentions">            
-           <?php locate_template( array( 'members/single/intentions/intentions-loop.php' ), true); ?>
-	</div><!-- .intentions -->                                    
                                     
     <?php endif; ?>
+                                     </div><!-- .intentions --> 
                                                                      
                                 </div><!-- #item-body -->
                </div><!-- .padder -->
