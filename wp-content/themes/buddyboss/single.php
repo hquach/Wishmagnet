@@ -128,21 +128,33 @@
 						<div class="post-content">
 							<h1 class="posttitle"><?php the_title(); ?></h1>
 		
-							<p class="date"><?php the_date('M j, Y') ?> at <?php the_time() ?> <?php _e( 'in', 'buddypress' ) ?> <?php the_category(', ') ?> <?php printf( __( 'by %s', 'buddypress' ), bp_core_get_userlink( $post->post_author ) ) ?>  
+							<p class="date"><?php the_date('M j, Y') ?> at <?php the_time() ?> 
+                                                            
+                               <?php if (get_post_type() == "blog" ) : ?>
+                                                            <?php _e( 'in', 'buddypress' ) ?> <?php the_category(', ') ?> 
+                                <?php endif; ?>  
+                                                            
+                                                                <?php printf( __( 'by %s', 'buddypress' ), bp_core_get_userlink( $post->post_author ) ) ?>  
+                                                            
+                               <?php if (get_post_type() != "blog" ) : ?>
                                                               <?php edit_post_link( __( 'Edit this wish', 'buddypress' ), '&middot; <span class="edit-link">', '</span> &middot; ' ); ?>
                                                               <?php echo get_delete_post_link(get_the_ID()); ?>
-                                                        </p>
-	
-							<div class="entry">
-								<?php the_content( __( 'Read the rest of this entry &rarr;', 'buddypress' ) ); ?>
+                               <?php endif; ?>
                                                             
-                                                                <?php the_widget('WishTimerWidget'); ?>
-	
-								<?php wp_link_pages( array( 'before' => '<div class="page-link"><p>' . __( 'Pages: ', 'buddypress' ), 'after' => '</p></div>', 'next_or_number' => 'number' ) ); ?>
-								
-								<span class="tags"><?php the_tags( __( 'Tags: ', 'buddypress' ), ', ', ''); ?></span>
+                                                        </p>
+
+							<div class="entry">
+                                                               <?php the_content( __( 'Read the rest of this entry &rarr;', 'buddypress' ) ); ?>
+                                                            
+                              <?php if (get_post_type() != "blog" ) : ?>									
+                                                            	
+                                                                <?php the_widget('WishTimerWidget'); ?>								
+                                                            
+			     <?php endif; ?>	
+                                                                <?php wp_link_pages( array( 'before' => '<div class="page-link"><p>' . __( 'Pages: ', 'buddypress' ), 'after' => '</p></div>', 'next_or_number' => 'number' ) ); ?>
+								   <span class="tags"><?php the_tags( __( 'Tags: ', 'buddypress' ), ', ', ''); ?></span>
 							</div>
-																
+															
 						</div>
 						
 						<div class="item-options">
@@ -152,7 +164,7 @@
 	
 					</div>
                             
-                                 <?php comments_template(); ?>
+                                 <?php  comments_template(); ?>
 					
 <?php 
     break; 

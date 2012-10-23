@@ -804,7 +804,7 @@ div.page ul, div.page ol, div.page dl { margin: 0 0 18px 3em; }
 /*div.post ol, div.page ol { list-style: decimal; }*/
 div.post ol ol, div.page ol ol { list-style: upper-alpha; }
 div.post dl, div.page dl { margin-left: 0; }
-div.post dt, div.page dt { font-size: 14px; font-weight: bold; font-family: ; }
+div.post dt, div.page dt { font-size: 14px; font-weight: bold;}
 div.post dd, div.page dd { margin: 0 0 15px 0;}
 div.post ul ul, div.post ol ol, div.post ul ol, div.post ol ul,
 div.page ul ul, div.page ol ol, div.page ul ol, div.page ol ul {

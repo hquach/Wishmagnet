@@ -483,5 +483,37 @@ div.widget_recent_intentions{
     font-size: 12px;
 
 }
+#blog-page h1.pagetitle {
+    margin-bottom: 30px;
+}
+#blog-page .entry .author_img {
+    float: left;
+    margin: 7px 17px 7px 7px;
+}
+#blog-page .entry .post-headline h1 {
+    margin-bottom: 10px; 
+    line-height: 1.3em;
+    font-size: 21px;
+} 
 
+#blog-page .post .post-headline a{
+    color: #d37a87;    
+}
+#blog-page .post .post-headline a:hover{
+    color: #686868;
+    text-decoration: none;
+}
 
+#blog-page p.date { margin: 0 0 20px 0; }
+
+#blog-page .post-bodycopy{
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 21px;    
+}
+
+#blog-page div.post-comments{
+    float:right; 
+    margin-right: 50px;
+    font-size: 11px;
+}
